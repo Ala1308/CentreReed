@@ -1,3 +1,130 @@
+/* ===== Custom: Floating logo + floating navbar (desktop) ===== */
+@media (min-width: 992px) {
+  .header {
+    background: transparent !important;
+    box-shadow: none !important;
+    position: sticky;
+    top: 16px;
+    z-index: 100;
+  }
+  .header .container-default,
+  .header-container {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  .header-container {
+    max-width: 1200px;
+  }
+  .header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  .brand.w-nav-brand {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 112px;
+    height: 112px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 10px 24px rgba(18, 28, 87, 0.12);
+  }
+  .brand.w-nav-brand .header-logo {
+    width: 120px; /* bigger logo image inside circle */
+    height: auto;
+    transform: translateY(-3px); /* nudge upward for optical centering */
+  }
+  .nav-menu.w-nav-menu {
+    display: inline-flex !important;
+    align-items: center;
+    height: 56px; /* fixed height */
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 0 12px; /* tighter navbar */
+    box-shadow: 0 10px 24px rgba(18, 28, 87, 0.12);
+  }
+  .header-navigation {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px; /* tighter spacing */
+    margin: 0;
+    padding: 0;
+  }
+  .header-navigation .nav-item-wrapper {
+    list-style: none;
+  }
+  .header-navigation .nav-link {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 12px;
+    border: 2px solid transparent; /* for blue contour animation */
+    transition: color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+    white-space: nowrap; /* keep on one line */
+    overflow-wrap: normal;
+    word-break: normal;
+    line-height: 1; /* thinner */
+    text-decoration: none;
+  }
+  .header-navigation .nav-link:hover,
+  .header-navigation .nav-link:focus {
+    border-color: #1e40af; /* blue contour */
+    box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.12);
+    transform: translateY(-1px);
+  }
+  .header-navigation .nav-link.w--current {
+    background-color: rgba(18, 28, 87, 0.12);
+  }
+  .header-left, .menu-button.w-nav-button {
+    display: none !important;
+  }
+  /* keep CTA on one line */
+  .button-2.w-button, .button-3.w-button, .button-primary {
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    height: 56px; /* match navbar */
+    padding: 0 24px;
+    line-height: 1;
+    border-radius: 28px;
+    border: 2px solid #fff; /* fine white contour */
+  }
+
+  /* Dropdown (Services) */
+  .header-navigation .dropdown { position: relative; }
+  .header-navigation .dropdown-menu {
+    position: absolute;
+    top: 100%; /* no gap so hover doesn't break */
+    left: 0;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 12px 28px rgba(18, 28, 87, 0.15);
+    padding: 8px;
+    min-width: 280px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(4px);
+    transition: opacity .2s ease, transform .2s ease;
+    z-index: 200;
+  }
+  .header-navigation .dropdown:hover .dropdown-menu { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .header-navigation .dropdown-menu a {
+    display: block;
+    padding: 8px 10px;
+    border-radius: 10px;
+    white-space: nowrap;
+    text-decoration: none;
+    color: inherit;
+    border: 2px solid transparent;
+    transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+  }
+  .header-navigation .dropdown-menu a:hover { border-color: #1e40af; box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.12); transform: translateY(-1px); }
+
+  /* Slightly reduce right padding on last item to balance edges */
+  .header-navigation .nav-item-wrapper:last-child .nav-link { padding-right: 6px; }
+}
+
 @font-face {
   font-family: Icons Education X Template;
   src: url('../fonts/icons-education-x-template.woff2') format("woff2");
@@ -676,7 +803,6 @@
   text-decoration: none;
   list-style-type: none;
 }
-
 .w-commerce-commercelayoutsidebar {
   flex: 0 0 320px;
   position: sticky;
@@ -1471,7 +1597,6 @@ figcaption {
 .style-guide-link-wrapper {
   margin-bottom: 8px;
 }
-
 .style-guide-sidebar-title {
   border-bottom: 1px solid var(--neutral-400);
   color: var(--neutral-800);
@@ -2271,7 +2396,6 @@ figcaption {
   margin-top: 40px;
   margin-bottom: 74px;
 }
-
 .icon-password {
   background-color: var(--secondary-1);
   border-radius: 1000px;
@@ -3066,7 +3190,6 @@ figcaption {
   font-weight: 700;
   line-height: 1.111em;
 }
-
 .title.cart-item-title {
   color: var(--neutral-700);
   font-size: 20px;
@@ -3866,7 +3989,6 @@ figcaption {
   font-size: 16px;
   line-height: 1.125em;
 }
-
 .cta-wrapper {
   justify-content: space-between;
   align-items: center;
@@ -4660,7 +4782,6 @@ figcaption {
   top: -240px;
   right: -288px;
 }
-
 .bg._404-circle-1 {
   background-color: var(--secondary-2);
   border-radius: 1000px;
@@ -5460,7 +5581,6 @@ figcaption {
   top: 24px;
   left: 24px;
 }
-
 .card-event-content {
   justify-content: space-between;
   width: 100%;
@@ -6260,7 +6380,6 @@ figcaption {
   text-decoration: none;
   transition: color .35s;
 }
-
 .dropdown-nav-link.special {
   border-bottom: 3px solid var(--primary-1);
   color: var(--primary-1);
@@ -7057,7 +7176,6 @@ figcaption {
   position: relative;
   overflow: hidden;
 }
-
 .more-templates-badge-wrapper {
   z-index: 9991;
   grid-column-gap: 10px;
@@ -7718,7 +7836,6 @@ figcaption {
     height: 200px;
   }
 }
-
 @media screen and (max-width: 991px) {
   h1 {
     margin-bottom: 20px;
@@ -8518,7 +8635,6 @@ figcaption {
     flex-direction: column;
     margin-bottom: 50px;
   }
-
   .content-top.courses {
     text-align: center;
     flex-direction: column;
@@ -9319,7 +9435,6 @@ figcaption {
     margin-bottom: 16px;
     margin-right: 0;
   }
-
   .top-bar-padding {
     padding-top: 26px;
     padding-bottom: 26px;
@@ -10120,7 +10235,6 @@ figcaption {
   .card-cta-number {
     font-size: 45px;
   }
-
   .home-about-wrapper {
     margin-bottom: 40px;
   }
@@ -10919,7 +11033,6 @@ figcaption {
   .grid-3-columns, .grid-2-columns {
     grid-template-columns: 1fr;
   }
-
   .home-surprises-card {
     border-radius: 28px;
   }
@@ -11719,7 +11832,6 @@ figcaption {
   .split-content.timeline-left {
     margin-bottom: 40px;
   }
-
   .split-content.upcoming-events-left {
     margin-bottom: 20px;
   }
@@ -12518,7 +12630,6 @@ figcaption {
   .card-event-content-top-text-wrapper {
     font-size: 14px;
   }
-
   .card-event-date-month {
     margin-bottom: 6px;
   }
