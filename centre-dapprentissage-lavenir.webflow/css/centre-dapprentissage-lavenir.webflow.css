@@ -38,7 +38,7 @@ html, body { max-width: 100%; overflow-x: hidden; }
 .section.about-hero.ghgh .container.text-center { margin-left: auto; margin-right: auto; }
 .section.about-hero.ghgh .heading-3 { width: auto; max-width: 100%; margin-left: auto; margin-right: auto; text-align: center; }
 .section.about-hero.ghgh .about-hero-right p:last-of-type { text-align: center; }
-.section.about-hero.ghgh .about-hero-right .about-team-cta { display: block; margin-left: auto; margin-right: auto; }
+.section.about-hero.ghgh .about-hero-right .about-team-cta { display: inline-flex; margin-left: auto; margin-right: auto; justify-content: center; align-items: center; }
 
 /* Center the Methodologie heading block */
 #method .title.text-center { text-align: center; margin-left: auto; margin-right: auto; display: block; }
@@ -70,7 +70,7 @@ html, body { max-width: 100%; overflow-x: hidden; }
 @media (max-width: 767px){ .vc-card { width: 100%; } }
 
 /* Improve 'Rencontrez notre équipe' button */
-.about-team-cta.w-button { font-size: 18px; padding: 10px 36px; border-width: 2px; border-radius: 30px; font-weight: 600; min-width: 260px; text-align: center; display: inline-block; }
+.about-team-cta.w-button { font-size: 18px; padding: 12px 40px; border-width: 2px; border-radius: 30px; font-weight: 600; min-width: 280px; text-align: center; display: inline-flex; justify-content: center; }
 /* ===== Custom: Floating logo + floating navbar (desktop) ===== */
 @media (min-width: 992px) {
   .header {
@@ -2059,9 +2059,7 @@ figcaption {
   left: auto;
 }
 
-.button-primary.e5.expl {
-  left: 350px;
-}
+.button-primary.e5.expl { position: static; left: auto; margin-left: auto; margin-right: auto; display: inline-block; }
 
 .button-secondary {
   background-color: var(--neutral-300);
