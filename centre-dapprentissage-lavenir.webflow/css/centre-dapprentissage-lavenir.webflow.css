@@ -198,6 +198,7 @@
   width: 100%;
   height: 100% !important;
   object-fit: contain !important;
+  border-radius: 16px;
 }
 .courses-categories-grid .image.card-courses-category {
   width: 100%;
