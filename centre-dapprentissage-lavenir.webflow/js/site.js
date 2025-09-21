@@ -27,34 +27,31 @@
     window.addEventListener('scroll', function(){ if(!ticking){ window.requestAnimationFrame(onScroll); ticking = true; } }, { passive: true });
   }
 
-  function initTriangleCarousel(){
-    var container = document.querySelector('.triangle-carousel');
+  function initVerticalCarousel(){
+    var container = document.querySelector('.v-carousel');
     if(!container) return;
-    var cards = Array.prototype.slice.call(container.querySelectorAll('.tc-card'));
-    if(cards.length !== 3) return;
+    var cards = Array.prototype.slice.call(container.querySelectorAll('.vc-card'));
+    if(cards.length === 0) return;
     var idx = 0;
-    function applyPositions(){
-      cards.forEach(function(card){ card.classList.remove('tc-pos-left','tc-pos-center','tc-pos-right'); });
-      cards[(idx+0)%3].classList.add('tc-pos-center');
-      cards[(idx+1)%3].classList.add('tc-pos-right');
-      cards[(idx+2)%3].classList.add('tc-pos-left');
+    function apply(){
+      cards.forEach(function(c, i){ c.classList.toggle('is-active', i === idx); });
     }
-    function next(){ idx = (idx+1)%3; applyPositions(); }
-    function prev(){ idx = (idx+2)%3; applyPositions(); }
-    var nextBtn = container.querySelector('.tc-next');
-    var prevBtn = container.querySelector('.tc-prev');
+    function next(){ idx = (idx+1) % cards.length; apply(); }
+    function prev(){ idx = (idx-1+cards.length) % cards.length; apply(); }
+    var nextBtn = container.querySelector('.vc-next');
+    var prevBtn = container.querySelector('.vc-prev');
     if(nextBtn) nextBtn.addEventListener('click', next);
     if(prevBtn) prevBtn.addEventListener('click', prev);
-    applyPositions();
-    var auto = setInterval(next, 4500);
+    apply();
+    var auto = setInterval(next, 5000);
     container.addEventListener('mouseenter', function(){ clearInterval(auto); });
-    container.addEventListener('mouseleave', function(){ auto = setInterval(next, 4500); });
+    container.addEventListener('mouseleave', function(){ auto = setInterval(next, 5000); });
   }
 
   if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', function(){ setBanner(); initScrollBehavior(); initTriangleCarousel(); });
+    document.addEventListener('DOMContentLoaded', function(){ setBanner(); initScrollBehavior(); initVerticalCarousel(); });
   } else {
-    setBanner(); initScrollBehavior(); initTriangleCarousel();
+    setBanner(); initScrollBehavior(); initVerticalCarousel();
   }
 })();
 
