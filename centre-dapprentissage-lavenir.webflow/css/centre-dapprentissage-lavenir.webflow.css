@@ -34,27 +34,32 @@ html, body { max-width: 100%; overflow-x: hidden; }
 /* Center the 'Qui sommes-nous' section layout */
 .section.about-hero.ghgh .about-hero-wrapper { display: grid; grid-template-columns: 1fr; justify-items: center; row-gap: 16px; }
 .section.about-hero.ghgh .about-hero-right { max-width: 940px; width: 100%; }
+.section.about-hero.ghgh .about-hero-right.about-card { margin-left: auto; margin-right: auto; }
 .section.about-hero.ghgh .about-hero-right p:last-of-type { text-align: center; }
 .section.about-hero.ghgh .about-hero-right .about-team-cta { display: block; margin-left: auto; margin-right: auto; }
 
 /* Center the Methodologie heading block */
-#method .title.text-center { text-align: center; }
+#method .title.text-center { text-align: center; margin-left: auto; margin-right: auto; display: block; }
 
 /* Vertical carousel */
 .v-carousel { position: relative; display: grid; grid-template-rows: auto 1fr auto; gap: 16px; align-items: center; justify-items: center; margin: 24px 0 40px; }
 .vc-btn { background: #0f5ab7; color: #fff; border: none; border-radius: 999px; width: 42px; height: 42px; display: grid; place-items: center; cursor: pointer; box-shadow: 0 4px 10px rgba(15,67,127,.2); }
 .vc-btn:hover { transform: translateY(-1px); }
-.vc-card { width: min(1000px, 96vw); transition: opacity .6s ease, transform .6s ease; }
+.vc-card { width: min(1100px, 96vw); transition: opacity .6s ease, transform .6s ease; }
+.v-carousel .about-card { padding: 28px; }
 .v-carousel .vc-card { display: none; }
 .v-carousel .vc-card.is-active { display: block; }
 
 /* Carousel card media */
 .vc-card-media { display: grid; grid-template-columns: 260px 1fr; gap: 20px; align-items: center; }
-.vc-card-media img { width: 320px; height: 200px; object-fit: cover; border-radius: 14px; box-shadow: 0 3px 8px rgba(15,67,127,.15); }
+.vc-card-media img { width: 360px; height: 220px; object-fit: cover; border-radius: 14px; box-shadow: 0 3px 8px rgba(15,67,127,.15); }
 .vc-card-media .vc-card-body { display: grid; gap: 8px; }
 @media (max-width: 767px){ .vc-card-media { grid-template-columns: 1fr; } .vc-card-media img { width: 100%; height: 220px; } }
 
 @media (max-width: 767px){ .vc-card { width: 100%; } }
+
+/* Improve 'Rencontrez notre équipe' button */
+.about-team-cta.w-button { font-size: 18px; padding: 14px 36px; border-width: 1px; border-radius: 28px; font-weight: 600; }
 /* ===== Custom: Floating logo + floating navbar (desktop) ===== */
 @media (min-width: 992px) {
   .header {
