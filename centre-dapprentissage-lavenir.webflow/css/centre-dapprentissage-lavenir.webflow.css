@@ -188,7 +188,7 @@
 
 /* Home services carousel adjustments */
 .courses-categories-grid .image-wrapper.card-courses-category {
-  height: 200px;
+  height: 160px;
   overflow: hidden;
 }
 .courses-categories-grid .image.card-courses-category {
@@ -202,6 +202,7 @@
   color: #184eac;
 }
 .courses-category .w-slider-arrow-left, .courses-category .w-slider-arrow-right {
+  top: 50%;
   transform: translateY(-50%);
 }
 /* push arrows outside carousel width */
@@ -219,8 +220,8 @@
   .cta-primary, .cta-phone { height: 44px; padding: 0 16px; border-radius: 22px; }
   .top-banner { height: 30px; font-size: 13px; }
   /* carousel arrows on mobile */
-  .courses-category .w-slider-arrow-left { left: -20px; }
-  .courses-category .w-slider-arrow-right { right: -20px; }
+  .courses-category .w-slider-arrow-left { left: -20px; top: 50%; transform: translateY(-50%); }
+  .courses-category .w-slider-arrow-right { right: -20px; top: 50%; transform: translateY(-50%); }
 }
 
 /* Equalize hero buttons */
