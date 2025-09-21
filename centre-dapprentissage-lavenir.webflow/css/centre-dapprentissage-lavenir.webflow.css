@@ -32,14 +32,25 @@ html, body { max-width: 100%; overflow-x: hidden; }
 .text-center { text-align: center; display: block; margin-left: auto; margin-right: auto; }
 
 /* Center the 'Qui sommes-nous' section layout */
-.section.about-hero.ghgh .about-hero-wrapper { display: grid; grid-template-columns: 1fr; justify-items: center; row-gap: 16px; }
-.section.about-hero.ghgh .about-hero-right { max-width: 940px; width: 100%; }
+.section.about-hero.ghgh .about-hero-wrapper { display: grid; grid-template-columns: 1fr; justify-items: center; row-gap: 16px; width: 100%; max-width: 1200px; margin: 0 auto; }
+.section.about-hero.ghgh .about-hero-right { max-width: 940px; width: 100%; margin-left: auto; margin-right: auto; }
 .section.about-hero.ghgh .about-hero-right.about-card { margin-left: auto; margin-right: auto; }
+.section.about-hero.ghgh .container.text-center { margin-left: auto; margin-right: auto; }
+.section.about-hero.ghgh .heading-3 { width: auto; max-width: 100%; margin-left: auto; margin-right: auto; text-align: center; }
 .section.about-hero.ghgh .about-hero-right p:last-of-type { text-align: center; }
 .section.about-hero.ghgh .about-hero-right .about-team-cta { display: block; margin-left: auto; margin-right: auto; }
 
 /* Center the Methodologie heading block */
 #method .title.text-center { text-align: center; margin-left: auto; margin-right: auto; display: block; }
+
+/* Force center the methodology section and title */
+.section.hghg.f.fgf { text-align: center; width: 100%; }
+.section.hghg.f.fgf .title.about-hero.edit.metho._11.text-center { width: 100%; text-align: center; margin: 0 auto; }
+/* Override legacy offsets that push the title to the right */
+.section.hghg.f.fgf .title.about-hero.edit.metho._11 { position: static; left: auto; top: auto; min-width: 0; max-width: none; width: auto; margin: 0 auto 40px; text-align: center; }
+
+/* Force center the 'Qui sommes-nous' section */
+.section.about-hero.ghgh { text-align: center; width: 100%; }
 
 /* Vertical carousel */
 .v-carousel { position: relative; display: grid; grid-template-rows: auto 1fr auto; gap: 16px; align-items: center; justify-items: center; margin: 24px 0 40px; }
@@ -59,7 +70,7 @@ html, body { max-width: 100%; overflow-x: hidden; }
 @media (max-width: 767px){ .vc-card { width: 100%; } }
 
 /* Improve 'Rencontrez notre équipe' button */
-.about-team-cta.w-button { font-size: 18px; padding: 14px 36px; border-width: 1px; border-radius: 28px; font-weight: 600; }
+.about-team-cta.w-button { font-size: 18px; padding: 10px 36px; border-width: 2px; border-radius: 30px; font-weight: 600; min-width: 260px; text-align: center; display: inline-block; }
 /* ===== Custom: Floating logo + floating navbar (desktop) ===== */
 @media (min-width: 992px) {
   .header {
@@ -7645,9 +7656,7 @@ figcaption {
   font-size: 18px;
 }
 
-.heading-3 {
-  width: 1300px;
-}
+.heading-3 { width: auto; }
 
 .heading-3.edit1.histoire {
   position: relative;
@@ -7761,11 +7770,11 @@ figcaption {
   }
 
   .title.about-hero {
-    text-align: left;
-    min-width: 1300px;
-    position: relative;
-    top: 60px;
-    left: 550px;
+    text-align: inherit;
+    min-width: 0;
+    position: static;
+    top: auto;
+    left: auto;
   }
 
   .title.about-hero.edit {
@@ -7773,9 +7782,9 @@ figcaption {
   }
 
   .title.about-hero.edit.metho {
-    min-width: 300px;
-    max-width: 400px;
-    left: 580px;
+    min-width: 0;
+    max-width: none;
+    left: auto;
   }
 
   .title.about-hero._1 {
@@ -13247,10 +13256,8 @@ figcaption {
     height: 200px;
   }
 
-  .section-4._88 {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
+.section-4._88 { padding-left: 20px; padding-right: 20px; text-align: center; }
+.section-4._88 .container._99 { margin-left: auto; margin-right: auto; text-align: center; }
 
   .paragraph-2 {
     text-align: left;
