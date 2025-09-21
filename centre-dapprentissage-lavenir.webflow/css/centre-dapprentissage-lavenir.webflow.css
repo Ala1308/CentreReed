@@ -10,6 +10,10 @@ body.about-body .title { letter-spacing: .2px; }
 
 /* Keep team CTA on one line and slightly wider */
 .about-team-cta.button.w-button { white-space: nowrap; padding-left: 28px; padding-right: 28px; }
+
+/* Wider CTA for long labels (service pages) */
+.cta-wide { white-space: nowrap; padding-left: 28px !important; padding-right: 28px !important; min-width: 300px; text-align: center; }
+@media (max-width: 479px){ .cta-wide { min-width: 0; width: 100%; } }
 /* ===== Custom: Floating logo + floating navbar (desktop) ===== */
 @media (min-width: 992px) {
   .header {
