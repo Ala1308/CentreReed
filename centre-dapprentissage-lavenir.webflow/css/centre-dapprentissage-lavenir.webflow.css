@@ -190,6 +190,7 @@
 .courses-categories-grid .image-wrapper.card-courses-category {
   height: 280px;
   overflow: hidden;
+  border-radius: 16px;
 }
 
 /* Ensure full image is visible inside the card frame */
@@ -235,7 +236,12 @@
 .home-hero ._2-buttons { display: flex; gap: 16px; align-items: stretch; }
 .home-hero ._2-buttons .hero-eq { flex: 1 1 0; width: auto; text-align: center; }
 .home-hero .button-primary.button-2-buttons,
-.home-hero .button-secondary.button-2-buttons { margin: 0; top: auto; left: auto; position: relative; display: flex; justify-content: center; }
+.home-hero .button-secondary.button-2-buttons { margin: 0; top: auto; left: auto; position: relative; display: flex; justify-content: center; align-items: center; height: 84px; padding: 0 40px; }
+
+@media (max-width: 991px) {
+  .home-hero .button-primary.button-2-buttons,
+  .home-hero .button-secondary.button-2-buttons { height: 64px; padding: 0 24px; }
+}
 
 @font-face {
   font-family: Icons Education X Template;
@@ -797,7 +803,6 @@
   line-height: 20px;
   display: block;
 }
-
 .w-commerce-commercecheckoutbillingcity::placeholder {
   color: #999;
 }
@@ -1597,7 +1602,6 @@ figcaption {
 .bg-neutral-200 {
   background-color: var(--neutral-200);
 }
-
 .bg-neutral-100 {
   background-color: var(--neutral-100);
 }
@@ -2398,7 +2402,6 @@ figcaption {
   align-items: center;
   display: flex;
 }
-
 .input {
   background-color: var(--neutral-200);
   color: var(--neutral-800);
@@ -3196,7 +3199,6 @@ figcaption {
   margin-bottom: 0;
   margin-right: 20px;
 }
-
 .title.card-post {
   margin-bottom: 0;
 }
@@ -3994,7 +3996,6 @@ figcaption {
   padding-left: 24px;
   padding-right: 24px;
 }
-
 .container-small-550px.home-about {
   text-align: center;
   margin-bottom: 55px;
@@ -4795,7 +4796,6 @@ figcaption {
   top: -299px;
   left: -269px;
 }
-
 .bg.contact-shape-2 {
   z-index: -1;
   background-color: var(--secondary-2);
@@ -5590,7 +5590,6 @@ figcaption {
   transition: background-color .3s, border-color .3s, color .3s, transform .3s;
   display: flex;
 }
-
 .blog-post-category-link:hover {
   border-color: var(--primary-1);
   background-color: var(--primary-1);
@@ -6390,7 +6389,6 @@ figcaption {
   grid-auto-columns: 1fr;
   display: grid;
 }
-
 .blog-category-grid {
   grid-column-gap: 29px;
   grid-row-gap: 50px;
@@ -7191,7 +7189,6 @@ figcaption {
 .mg-bottom-0 {
   margin-bottom: 0;
 }
-
 .mg-top-28px {
   margin-top: 28px;
 }
@@ -11161,7 +11158,6 @@ figcaption {
   .home-surprises-card {
     border-radius: 28px;
   }
-
   .buttons-row.center-mobile {
     justify-content: center;
   }
@@ -11960,7 +11956,6 @@ figcaption {
   .split-content.upcoming-events-left {
     margin-bottom: 20px;
   }
-
   .checkout-required-text {
     font-size: 18px;
   }
@@ -12758,7 +12753,6 @@ figcaption {
   .card-event-date-month {
     margin-bottom: 6px;
   }
-
   .card-event-date-day {
     font-size: 30px;
   }
