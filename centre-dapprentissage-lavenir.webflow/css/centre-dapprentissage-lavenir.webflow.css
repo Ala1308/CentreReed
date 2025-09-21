@@ -186,6 +186,28 @@
   .header--hidden { transform: translateY(-140%); }
 }
 
+/* Home services carousel adjustments */
+.courses-categories-grid .image-wrapper.card-courses-category {
+  height: 200px;
+  overflow: hidden;
+}
+.courses-categories-grid .image.card-courses-category {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.courses-category .w-slider-arrow-left, .courses-category .w-slider-arrow-right,
+.courses-category .w-slider-arrow-left .w-icon-slider-left,
+.courses-category .w-slider-arrow-right .w-icon-slider-right {
+  color: #184eac;
+}
+.courses-category .w-slider-arrow-left, .courses-category .w-slider-arrow-right {
+  transform: translateY(-50%);
+}
+/* push arrows outside carousel width */
+.courses-category .w-slider-arrow-left { left: -36px; }
+.courses-category .w-slider-arrow-right { right: -36px; }
+
 /* Mobile responsiveness */
 @media (max-width: 991px) {
   .brand.w-nav-brand { width: 64px; height: 64px; }
@@ -196,7 +218,14 @@
   .header-cta-split { width: 100%; margin-left: 0; margin-top: 8px; justify-content: flex-end; }
   .cta-primary, .cta-phone { height: 44px; padding: 0 16px; border-radius: 22px; }
   .top-banner { height: 30px; font-size: 13px; }
+  /* carousel arrows on mobile */
+  .courses-category .w-slider-arrow-left { left: -20px; }
+  .courses-category .w-slider-arrow-right { right: -20px; }
 }
+
+/* Equalize hero buttons */
+.hero-eq { min-width: 260px; text-align: center; }
+.hero-eq + .hero-eq { margin-left: 12px; }
 
 @font-face {
   font-family: Icons Education X Template;
