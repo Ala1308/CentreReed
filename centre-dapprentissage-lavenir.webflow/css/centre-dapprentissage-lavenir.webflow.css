@@ -14,6 +14,20 @@ body.about-body .title { letter-spacing: .2px; }
 /* Wider CTA for long labels (service pages) */
 .cta-wide { white-space: nowrap; padding-left: 28px !important; padding-right: 28px !important; min-width: 300px; text-align: center; }
 @media (max-width: 479px){ .cta-wide { min-width: 0; width: 100%; } }
+
+/* KPI auto-scrolling ticker */
+.kpi-ticker { overflow: hidden; position: relative; padding: 10px 0; }
+.kpi-track { display: flex; gap: 16px; width: max-content; animation: kpi-scroll 25s linear infinite; }
+.kpi-card { display: inline-flex; align-items: center; gap: 12px; padding: 14px 22px; background: #f6f9ff; border-radius: 14px; box-shadow: 0 1px 0 rgba(24,78,172,.06), 0 0 0 1px rgba(24,78,172,.08); }
+.kpi-card .kpi-emoji { font-size: 22px; }
+.kpi-card .kpi-text { font-weight: 700; color: #0f437f; white-space: nowrap; }
+@keyframes kpi-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* About: card styling for Qui sommes-nous */
+.about-card { background: #ffffff; border-radius: 16px; box-shadow: 0 10px 24px rgba(15,67,127,.08); padding: 24px; }
 /* ===== Custom: Floating logo + floating navbar (desktop) ===== */
 @media (min-width: 992px) {
   .header {
