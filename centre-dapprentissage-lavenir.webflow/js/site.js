@@ -43,7 +43,7 @@
     if(nextBtn) nextBtn.addEventListener('click', next);
     if(prevBtn) prevBtn.addEventListener('click', prev);
     apply();
-    var auto = setInterval(next, 5000);
+    var auto = setInterval(next, 3000);
     container.addEventListener('mouseenter', function(){ clearInterval(auto); });
     container.addEventListener('mouseleave', function(){ auto = setInterval(next, 5000); });
   }
