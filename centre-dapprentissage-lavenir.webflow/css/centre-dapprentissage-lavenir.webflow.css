@@ -244,6 +244,19 @@
   .home-hero .button-secondary.button-2-buttons { height: 64px; padding: 0 24px; }
 }
 
+/* Service pages – rich text table styling (theme colors) */
+.course-rich-text-wrapper table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 16px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 0 rgba(24, 78, 172, 0.08), 0 0 0 1px rgba(24, 78, 172, 0.12); }
+.course-rich-text-wrapper thead th { background: #184eac; color: #fff; padding: 12px 16px; text-align: left; font-weight: 700; }
+.course-rich-text-wrapper tbody td { background: #f6f9ff; padding: 12px 16px; vertical-align: top; border-top: 1px solid rgba(24, 78, 172, 0.12); }
+.course-rich-text-wrapper tbody td ul { list-style: disc; padding-left: 18px; margin: 0; }
+.course-rich-text-wrapper tbody td li { margin: 4px 0; }
+.course-rich-text-wrapper tbody tr:nth-child(even) td { background: #eef3ff; }
+.course-rich-text-wrapper ul { margin: 0; padding-left: 18px; }
+
+/* Keep service CTAs on a single line */
+.course-rich-text-wrapper a.button.w-button,
+.course .card.get-course .button.w-button { white-space: nowrap; }
+
 @font-face {
   font-family: Icons Education X Template;
   src: url('../fonts/icons-education-x-template.woff2') format("woff2");
