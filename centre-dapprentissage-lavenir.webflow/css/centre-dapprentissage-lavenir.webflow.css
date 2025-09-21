@@ -139,8 +139,10 @@
   padding: 0 12px;
   font-size: 14px;
   box-shadow: 0 2px 6px rgba(0,0,0,.08);
+  transition: transform .25s ease, opacity .25s ease;
 }
 .top-banner a { color: #fcdf69; text-decoration: none; font-weight: 600; margin-left: 8px; }
+.top-banner.is-hidden { transform: translateY(-100%); opacity: 0; pointer-events: none; }
 
 /* Split CTAs to the right of navbar */
 @media (min-width: 992px) {
@@ -149,25 +151,39 @@
     background: #184eac;
     color: #fff;
     height: 56px;
-    padding: 0 20px;
+    padding: 0 28px;
     border-radius: 28px 0 0 28px;
     display: inline-flex;
     align-items: center;
     border: 2px solid #fff;
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap;
   }
   .cta-phone {
     background: #0d3560;
     color: #fff;
     height: 56px;
-    padding: 0 18px;
+    padding: 0 28px;
     border-radius: 0 28px 28px 0;
     display: inline-flex;
     align-items: center;
     border: 2px solid #fff;
     border-left: 0;
     gap: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap;
   }
   .cta-primary:hover, .cta-phone:hover { filter: brightness(1.05); box-shadow: 0 6px 16px rgba(18, 28, 87, 0.12); }
+  /* push CTAs to far right */
+  .header-cta-split { margin-left: auto; }
+}
+
+/* navbar hide on scroll down */
+@media (min-width: 992px) {
+  .header { transition: transform .25s ease; }
+  .header--hidden { transform: translateY(-140%); }
 }
 
 @font-face {
