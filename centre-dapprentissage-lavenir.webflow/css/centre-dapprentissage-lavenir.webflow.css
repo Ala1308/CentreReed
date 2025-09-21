@@ -1,3 +1,15 @@
+/* About page readability tweaks */
+body.about-body .paragraph { font-size: 20px; line-height: 1.7em; }
+body.about-body .title { letter-spacing: .2px; }
+
+/* About KPIs layout and emoji sizing */
+.about-kpis { margin-top: 16px; }
+.about-kpis .kpi { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center; padding: 14px 16px; background: #f6f9ff; border-radius: 12px; box-shadow: 0 1px 0 rgba(24,78,172,.06), 0 0 0 1px rgba(24,78,172,.08); }
+.about-kpis .kpi-emoji { font-size: 28px; }
+.about-kpis .kpi-text { font-weight: 700; color: #0f437f; }
+
+/* Keep team CTA on one line and slightly wider */
+.about-team-cta.button.w-button { white-space: nowrap; padding-left: 28px; padding-right: 28px; }
 /* ===== Custom: Floating logo + floating navbar (desktop) ===== */
 @media (min-width: 992px) {
   .header {
