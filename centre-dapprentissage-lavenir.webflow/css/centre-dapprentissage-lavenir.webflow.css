@@ -1,6 +1,7 @@
 /* About page readability tweaks */
 body.about-body .paragraph { font-size: 20px; line-height: 1.7em; }
 body.about-body .title { letter-spacing: .2px; }
+html, body { max-width: 100%; overflow-x: hidden; }
 
 /* About KPIs layout and emoji sizing */
 .about-kpis { margin-top: 16px; }
@@ -28,7 +29,16 @@ body.about-body .title { letter-spacing: .2px; }
 
 /* About: card styling for Qui sommes-nous */
 .about-card { background: #ffffff; border-radius: 16px; box-shadow: 0 10px 24px rgba(15,67,127,.08); padding: 24px; }
-.text-center { text-align: center; }
+.text-center { text-align: center; display: block; margin-left: auto; margin-right: auto; }
+
+/* Center the 'Qui sommes-nous' section layout */
+.section.about-hero.ghgh .about-hero-wrapper { display: grid; grid-template-columns: 1fr; justify-items: center; row-gap: 16px; }
+.section.about-hero.ghgh .about-hero-right { max-width: 940px; width: 100%; }
+.section.about-hero.ghgh .about-hero-right p:last-of-type { text-align: center; }
+.section.about-hero.ghgh .about-hero-right .about-team-cta { display: block; margin-left: auto; margin-right: auto; }
+
+/* Center the Methodologie heading block */
+#method .title.text-center { text-align: center; }
 
 /* Vertical carousel */
 .v-carousel { position: relative; display: grid; grid-template-rows: auto 1fr auto; gap: 16px; align-items: center; justify-items: center; margin: 24px 0 40px; }
