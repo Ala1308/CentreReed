@@ -186,6 +186,18 @@
   .header--hidden { transform: translateY(-140%); }
 }
 
+/* Mobile responsiveness */
+@media (max-width: 991px) {
+  .brand.w-nav-brand { width: 64px; height: 64px; }
+  .brand.w-nav-brand .header-logo { width: 48px; transform: translateY(-2px); }
+  .nav-menu.w-nav-menu { height: auto; padding: 8px 12px; border-radius: 12px; }
+  .header-navigation { gap: 8px; flex-wrap: wrap; }
+  .header-navigation .nav-link { padding: 8px 10px; font-size: 15px; }
+  .header-cta-split { width: 100%; margin-left: 0; margin-top: 8px; justify-content: flex-end; }
+  .cta-primary, .cta-phone { height: 44px; padding: 0 16px; border-radius: 22px; }
+  .top-banner { height: 30px; font-size: 13px; }
+}
+
 @font-face {
   font-family: Icons Education X Template;
   src: url('../fonts/icons-education-x-template.woff2') format("woff2");

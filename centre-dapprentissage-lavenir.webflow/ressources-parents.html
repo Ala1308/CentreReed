@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Ressources pour parents - CA Avenir</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href="css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="css/webflow.css" rel="stylesheet" type="text/css">
+  <link href="css/centre-dapprentissage-lavenir.webflow.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <div class="top-banner">⚠️ Examens d’admission du secondaire 2025 : <a href="#">En savoir plus</a></div>
+  <div class="page-wrapper">
+    <div class="header w-nav">
+      <div class="container-default header-container w-container">
+        <div class="header-wrapper">
+          <div class="split-content header-right">
+            <a href="index.html" class="brand w-nav-brand"><img src="images/logoreed-2.png" alt="" class="header-logo"></a>
+          </div>
+          <nav role="navigation" class="nav-menu w-nav-menu">
+            <ul role="list" class="header-navigation">
+              <li class="nav-item-wrapper"><a href="index.html" class="nav-link">Accueil</a></li>
+              <li class="nav-item-wrapper"><a href="about.html" class="nav-link">À propos</a></li>
+              <li class="nav-item-wrapper dropdown">
+                <a href="courses.html" class="nav-link">Services</a>
+                <div class="dropdown-menu">
+                  <a href="services/rattrapage.html">Rattrapage scolaire</a>
+                  <a href="services/enrichissement.html">Enrichissement scolaire</a>
+                  <a href="services/preparation-examens-ministeriels.html">Examens ministériels</a>
+                  <a href="services/aide-aux-devoirs.html">Aide aux devoirs</a>
+                  <a href="services/preparation-tests-admission-ecoles-privees.html">Tests d’admission</a>
+                </div>
+              </li>
+              <li class="nav-item-wrapper dropdown">
+                <a href="#" class="nav-link">Ressources</a>
+                <div class="dropdown-menu">
+                  <a href="ressources-parents.html">Ressources pour parents</a>
+                  <a href="ressources-eleves.html">Ressources pour élèves</a>
+                  <a href="blog.html">Blogue</a>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="header-cta-split">
+            <a href="contact.html" class="cta-primary">Demandez un tuteur</a>
+            <a href="tel:+14389332853" class="cta-phone" onmouseover="this.textContent='📞 1 (438) 933-2853'" onmouseout="this.textContent='📞 Appelez-nous'">📞 Appelez-nous</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="container-default w-container">
+        <h1>Ressources pour parents</h1>
+        <p>Guides pratiques, conseils d’étude, et outils pour accompagner efficacement vos enfants.</p>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container-default w-container">
+        <div class="divider footer-bottom"></div>
+      </div>
+    </footer>
+  </div>
+  <script src="js/webflow.js" type="text/javascript"></script>
+  <script>
+    (function(){
+      var lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
+      var header = document.querySelector('.header');
+      var banner = document.querySelector('.top-banner');
+      var ticking = false;
+      function onScroll(){
+        var currentY = window.pageYOffset || document.documentElement.scrollTop;
+        if(header){ if(currentY > lastScrollY + 5){ header.classList.add('header--hidden'); } else if(currentY < lastScrollY - 5){ header.classList.remove('header--hidden'); }}
+        if(banner){ if(currentY > 10){ banner.classList.add('is-hidden'); } else { banner.classList.remove('is-hidden'); }}
+        lastScrollY = currentY; ticking = false;
+      }
+      window.addEventListener('scroll', function(){ if(!ticking){ window.requestAnimationFrame(onScroll); ticking = true; } }, { passive: true });
+    })();
+  </script>
+</body>
+</html>
+
