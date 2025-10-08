@@ -1,6 +1,6 @@
 // Shared site behaviors: banner content + header/top-banner scroll behavior
 (function(){
-  var BANNER_HTML = '⚠️ Examens d’admission du secondaire 2025 : <a href="#">En savoir plus</a>';
+  var BANNER_HTML = '⚠️ Grande Ouverture du Centre Reed 2025 : <a href="#">En savoir plus</a>';
 
   function setBanner(){
     var banner = document.querySelector('.top-banner');
@@ -12,19 +12,47 @@
     var header = document.querySelector('.header');
     var banner = document.querySelector('.top-banner');
     var ticking = false;
+    
     function onScroll(){
       var y = window.pageYOffset || document.documentElement.scrollTop;
+      
       if(header){
-        if(y > lastY + 5){ header.classList.add('header--hidden'); }
-        else if(y < lastY - 5){ header.classList.remove('header--hidden'); }
+        // At the very top - header below banner, transparent background
+        if(y <= 10){
+          header.classList.remove('header--hidden');
+          header.classList.remove('header--fixed');
+        }
+        // Scrolling down - hide header content
+        else if(y > lastY){
+          header.classList.add('header--hidden');
+          header.classList.remove('header--fixed');
+        } 
+        // Scrolling up - show header at viewport top with white background
+        else if(y < lastY){
+          header.classList.remove('header--hidden');
+          header.classList.add('header--fixed');
+        }
       }
+      
+      // Banner should only appear at the very top
       if(banner){
-        if(y > 10){ banner.classList.add('is-hidden'); }
-        else { banner.classList.remove('is-hidden'); }
+        if(y <= 10){
+          banner.classList.remove('is-hidden');
+        } else {
+          banner.classList.add('is-hidden');
+        }
       }
-      lastY = y; ticking = false;
+      
+      lastY = y; 
+      ticking = false;
     }
-    window.addEventListener('scroll', function(){ if(!ticking){ window.requestAnimationFrame(onScroll); ticking = true; } }, { passive: true });
+    
+    window.addEventListener('scroll', function(){ 
+      if(!ticking){ 
+        window.requestAnimationFrame(onScroll); 
+        ticking = true; 
+      } 
+    }, { passive: true });
   }
 
   function initVerticalCarousel(){
