@@ -2,6 +2,26 @@
 // Make sure to include firebase-config.js before this file
 
 // =========================
+// HELPER FUNCTIONS
+// =========================
+
+/**
+ * Get category image based on blog category
+ * Returns the appropriate category image path
+ */
+function getCategoryImage(category) {
+  const categoryImages = {
+    'Conseils': 'images/Conseils.png',
+    'Nouvelles': 'images/Nouvelles.png',
+    'Tutoriels': 'images/Tutoriels.png',
+    'Événements': 'images/Événements.png',
+    'Examens': 'images/Examens.png'
+  };
+  
+  return categoryImages[category] || 'images/logoreed-2.png'; // Fallback to logo
+}
+
+// =========================
 // BANNER MESSAGES
 // =========================
 
