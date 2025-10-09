@@ -1,19 +1,9 @@
 // Shared site behaviors: banner content + header/top-banner scroll behavior
 (function(){
-  var BANNER_HTML = '⚠️ Grande Ouverture du Centre Reed 2025 : <a href="#" class="banner-learn-more">En savoir plus</a>';
-
+  // Banner is now handled by Firebase (see firebase-banner.js)
+  // Keeping this function for backwards compatibility but it does nothing
   function setBanner(){
-    var banner = document.querySelector('.top-banner');
-    if(banner){ banner.innerHTML = BANNER_HTML; }
-    
-    // Add event listener to "En savoir plus" link
-    var learnMoreLink = banner.querySelector('.banner-learn-more');
-    if(learnMoreLink){
-      learnMoreLink.addEventListener('click', function(e){
-        e.preventDefault();
-        openBannerModal();
-      });
-    }
+    // Firebase handles banner population
   }
 
   function openBannerModal(){

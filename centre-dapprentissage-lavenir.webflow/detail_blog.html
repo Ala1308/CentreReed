@@ -40,6 +40,8 @@
 </script>
 </head>
 <body>
+  <!-- Top Banner - Firebase Dynamic Content -->
+  <div id="firebase-banner" class="top-banner"></div>
   <div style="opacity:0" class="page-wrapper">
     <div data-collapse="medium" data-animation="over-right" data-duration="500" data-easing="ease-in-out-quart" data-easing2="ease-in-out-quart" data-w-id="58db7844-5919-d71b-dd74-2323ed8dffe9" role="banner" class="header w-nav">
       <div class="container-default header-container w-container">
@@ -81,39 +83,26 @@
     </div>
     <div data-w-id="408f018e-83dd-0452-3759-8e713481ddbc" class="section blog-post">
       <div class="container-default blog-post w-container">
-        <div class="image-wrapper blog-post-main-image"><img src="" alt="" class="image blog-post-main-image w-dyn-bind-empty"></div>
+        <div id="blog-main-image" class="image-wrapper blog-post-main-image"></div>
         <div class="bg blog-post-shape-1"></div>
       </div>
       <div class="container-medium-948px blog-post">
-        <h1 data-w-id="c393d7e9-71ac-1a23-f0ca-6426b164b487" style="opacity:0" class="title blog-post w-dyn-bind-empty"></h1>
-        <div data-w-id="3708fab3-b4db-4219-e8d9-0dfdb0afd53d" style="opacity:0" class="blog-post-about-wrapper">
-          <a data-w-id="1a648824-be40-9923-273a-e1ac97a7722f" href="#" class="blog-post-author-link w-inline-block">
-            <div class="image-wrapper blog-post-author"></div>
+        <h1 id="blog-title" data-w-id="c393d7e9-71ac-1a23-f0ca-6426b164b487" style="opacity:1" class="title blog-post"></h1>
+        <div data-w-id="3708fab3-b4db-4219-e8d9-0dfdb0afd53d" style="opacity:1" class="blog-post-about-wrapper">
+          <div class="blog-post-author-link">
             <div class="blog-post-author-content">
-              <div class="blog-post-date w-dyn-bind-empty"></div>
+              <div id="blog-author" class="blog-post-date"></div>
+              <div id="blog-date" class="blog-post-date"></div>
             </div>
-          </a>
+          </div>
           <div class="blog-post-about-right">
-            <a data-w-id="d2d8db88-0149-91d9-3178-d40eef65e422" href="#" class="blog-post-category-link w-inline-block"><img src="" alt="" class="blog-post-category-icon w-dyn-bind-empty">
-              <div class="blog-post-category-text w-dyn-bind-empty"></div>
-            </a>
-            <div class="blog-post-reading-time">
-              <div class="w-dyn-bind-empty"></div>
-              <div> m</div>
+            <div class="blog-post-category-link">
+              <div id="blog-category" class="blog-post-category-text"></div>
             </div>
           </div>
         </div>
         <div class="divider blog-post"></div>
-        <div data-w-id="b3b6c020-2599-a343-657d-a91d13b6e4e3" style="opacity:0" class="rich-text w-dyn-bind-empty w-richtext"></div>
-        <div data-w-id="ac591e4a-8568-900e-51b0-4fe516edba75" style="opacity:0" class="card-author-wrapper">
-          <div data-w-id="8377b320-36f7-2ae2-3e6d-2044e2b20034" class="card author">
-            <div class="card-author-content">
-              <a href="#" class="card-author-content-link w-inline-block">
-                <div class="content-top card-author"></div>
-              </a>
-            </div>
-          </div>
-        </div>
+        <div id="blog-content" data-w-id="b3b6c020-2599-a343-657d-a91d13b6e4e3" style="opacity:1" class="rich-text w-richtext"></div>
         <div class="bg blog-post-shape-2"></div>
       </div>
       <div class="bg blog-post"></div>
@@ -128,24 +117,10 @@
             <a href="blog.html" class="button-secondary w-button">All posts</a>
           </div>
         </div>
-        <div class="w-dyn-list">
-          <div role="list" class="latest-posts-grid w-dyn-items">
-            <div data-w-id="baf40a28-d295-a55b-48ba-8d50bf1f2ed9" style="opacity:0" role="listitem" class="post-item w-dyn-item">
-              <a href="#" class="card post w-inline-block">
-                <div class="image-wrapper card-post"><img src="" alt="" class="image card-post w-dyn-bind-empty">
-                  <div class="card-post-category-wrapper"><img src="" alt="" class="image card-post-category-icon w-dyn-bind-empty">
-                    <div class="w-dyn-bind-empty"></div>
-                  </div>
-                </div>
-                <div class="card-post-content">
-                  <div class="card-post-date w-dyn-bind-empty"></div>
-                  <h3 class="title card-post w-dyn-bind-empty"></h3>
-                </div>
-              </a>
-            </div>
-          </div>
+        <!-- Related Posts (Firebase) -->
+        <div id="related-posts-container" class="w-dyn-list">
           <div class="empty-state neutral-100 w-dyn-empty">
-            <div>No items found.</div>
+            <div>Chargement...</div>
           </div>
         </div>
       </div>
@@ -221,20 +196,231 @@
     <div class="more-templates-lottie" data-w-id="fdacf8d2-c012-6dd3-c171-c8e73486489b" data-animation-type="lottie" data-src="https://uploads-ssl.webflow.com/5e30f06b05f79621331ddc25/65dcea068e8dfd14eaed7b6f_Notification%20Dot.json" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="2.5" data-duration="0"></div>
   </a>
   
-  <!-- Banner Modal Popup -->
+  <!-- Firebase Banner Modal Popup (dynamically populated) -->
   <div id="banner-modal">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title">Grande Ouverture du Centre Reed 2025</h2>
-        <button class="modal-close" aria-label="Fermer">&times;</button>
+        <h2 id="modal-title" class="modal-title"></h2>
+        <button class="modal-close" onclick="closeBannerModal()" aria-label="Fermer">&times;</button>
       </div>
       <div class="modal-body">
-        <p>Le contenu détaillé de cette annonce sera bientôt disponible.</p>
+        <div id="modal-image-container"></div>
+        <div id="modal-text"></div>
       </div>
     </div>
   </div>
   
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  
+  <!-- Firebase Config & Helpers -->
+  <script src="js/firebase-config.js"></script>
+  <script src="js/firestore-helpers.js"></script>
+  
+  <!-- Your existing scripts -->
   <script src="js/minimal-interactions.js" type="text/javascript"></script>
   <script src="js/site.js" type="text/javascript"></script>
+  
+  <!-- Load Blog Article -->
+  <script>
+    // Banner functions
+    function showBannerModal() {
+      const modal = document.getElementById('banner-modal');
+      if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    
+    function closeBannerModal() {
+      const modal = document.getElementById('banner-modal');
+      if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    }
+    
+    document.getElementById('banner-modal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeBannerModal();
+      }
+    });
+    
+    // Load banner
+    async function loadFirebaseBanner() {
+      try {
+        const bannerData = await getActiveBannerMessage();
+        
+        if (bannerData) {
+          const bannerDiv = document.getElementById('firebase-banner');
+          bannerDiv.innerHTML = `⚠️ ${bannerData.shortMessage} : <a href="#" class="banner-learn-more" onclick="event.preventDefault(); showBannerModal();">En savoir plus</a>`;
+          bannerDiv.style.display = 'block';
+          
+          document.getElementById('modal-title').textContent = bannerData.fullTitle || '';
+          const imageContainer = document.getElementById('modal-image-container');
+          if (bannerData.image) {
+            imageContainer.innerHTML = `<img src="${bannerData.image}" alt="${bannerData.fullTitle}" class="modal-image">`;
+          } else {
+            imageContainer.innerHTML = '';
+          }
+          document.getElementById('modal-text').innerHTML = bannerData.fullText || '';
+          window.currentBanner = bannerData;
+        }
+      } catch (error) {
+        console.error('Error loading banner:', error);
+      }
+    }
+    
+    // Get slug from URL
+    function getSlugFromURL() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('slug');
+    }
+    
+    // Load blog article
+    async function loadBlogArticle() {
+      try {
+        const slug = getSlugFromURL();
+        
+        if (!slug) {
+          document.getElementById('blog-content').innerHTML = '<p>Article non trouvé. Veuillez retourner à la <a href="blog.html">page du blog</a>.</p>';
+          return;
+        }
+        
+        console.log('Loading article with slug:', slug);
+        
+        const article = await getBlogArticleBySlug(slug);
+        
+        if (!article) {
+          document.getElementById('blog-content').innerHTML = '<p>Article non trouvé. Veuillez retourner à la <a href="blog.html">page du blog</a>.</p>';
+          return;
+        }
+        
+        console.log('Article loaded:', article);
+        
+        // Update page title
+        document.title = article.title + ' - CA Avenir';
+        
+        // Display featured image
+        const imageContainer = document.getElementById('blog-main-image');
+        const imageUrl = article.featuredImage && article.featuredImage.trim() !== '' 
+          ? article.featuredImage 
+          : 'https://via.placeholder.com/1200x600/0f437f/ffffff?text=' + encodeURIComponent(article.title);
+        imageContainer.innerHTML = `<img src="${imageUrl}" alt="${article.title}" class="image blog-post-main-image">`;
+        
+        // Display title
+        document.getElementById('blog-title').textContent = article.title;
+        
+        // Display author
+        document.getElementById('blog-author').textContent = article.author || 'CA Avenir';
+        
+        // Display date
+        const publishDate = article.publishDate?.toDate ? 
+          article.publishDate.toDate().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
+        document.getElementById('blog-date').textContent = publishDate;
+        
+        // Display category
+        document.getElementById('blog-category').textContent = article.category || '';
+        
+        // Display content
+        document.getElementById('blog-content').innerHTML = article.content || article.excerpt || '';
+        
+        // Load related articles
+        await loadRelatedArticles(article.category, article.id);
+        
+      } catch (error) {
+        console.error('Error loading blog article:', error);
+        document.getElementById('blog-content').innerHTML = '<p>Erreur lors du chargement de l\'article.</p>';
+      }
+    }
+    
+    // Load related articles
+    async function loadRelatedArticles(category, currentArticleId) {
+      try {
+        const articles = await getBlogArticlesByCategory(category, 4);
+        
+        // Filter out current article and limit to 3
+        const relatedArticles = articles.filter(a => a.id !== currentArticleId).slice(0, 3);
+        
+        const container = document.getElementById('related-posts-container');
+        
+        if (relatedArticles.length > 0) {
+          let html = '<div role="list" class="latest-posts-grid w-dyn-items">';
+          
+          relatedArticles.forEach(article => {
+            const date = article.publishDate?.toDate ? 
+              article.publishDate.toDate().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
+            const imageUrl = article.featuredImage && article.featuredImage.trim() !== '' 
+              ? article.featuredImage 
+              : 'https://via.placeholder.com/400x300/0f437f/ffffff?text=Article';
+            
+            html += `
+              <div data-w-id="baf40a28-d295-a55b-48ba-8d50bf1f2ed9" style="opacity:1" role="listitem" class="post-item w-dyn-item">
+                <a href="detail_blog.html?slug=${article.slug}" class="card post w-inline-block">
+                  <div class="image-wrapper card-post">
+                    <img src="${imageUrl}" alt="${article.title}" class="image card-post">
+                    <div class="card-post-category-wrapper">
+                      <div>${article.category}</div>
+                    </div>
+                  </div>
+                  <div class="card-post-content">
+                    <div class="card-post-date">${date}</div>
+                    <h3 class="title card-post">${article.title}</h3>
+                  </div>
+                </a>
+              </div>
+            `;
+          });
+          
+          html += '</div>';
+          container.innerHTML = html;
+        } else {
+          // If no related articles, show latest articles
+          const latestArticles = await getBlogArticles(3);
+          
+          if (latestArticles.length > 0) {
+            let html = '<div role="list" class="latest-posts-grid w-dyn-items">';
+            
+            latestArticles.forEach(article => {
+              const date = article.publishDate?.toDate ? 
+                article.publishDate.toDate().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
+              const imageUrl = article.featuredImage && article.featuredImage.trim() !== '' 
+                ? article.featuredImage 
+                : 'https://via.placeholder.com/400x300/0f437f/ffffff?text=Article';
+              
+              html += `
+                <div data-w-id="baf40a28-d295-a55b-48ba-8d50bf1f2ed9" style="opacity:1" role="listitem" class="post-item w-dyn-item">
+                  <a href="detail_blog.html?slug=${article.slug}" class="card post w-inline-block">
+                    <div class="image-wrapper card-post">
+                      <img src="${imageUrl}" alt="${article.title}" class="image card-post">
+                      <div class="card-post-category-wrapper">
+                        <div>${article.category}</div>
+                      </div>
+                    </div>
+                    <div class="card-post-content">
+                      <div class="card-post-date">${date}</div>
+                      <h3 class="title card-post">${article.title}</h3>
+                    </div>
+                  </a>
+                </div>
+              `;
+            });
+            
+            html += '</div>';
+            container.innerHTML = html;
+          }
+        }
+      } catch (error) {
+        console.error('Error loading related articles:', error);
+      }
+    }
+    
+    // Load on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      loadFirebaseBanner();
+      loadBlogArticle();
+    });
+  </script>
 </body>
 </html>

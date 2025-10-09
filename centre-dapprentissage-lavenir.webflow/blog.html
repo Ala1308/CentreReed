@@ -40,7 +40,8 @@
 </script>
 </head>
 <body>
-  <div class="top-banner"></div>
+  <!-- Top Banner - Firebase Dynamic Content -->
+  <div id="firebase-banner" class="top-banner"></div>
   <div style="opacity:0" class="page-wrapper">
     <div data-collapse="medium" data-animation="over-right" data-duration="500" data-easing="ease-in-out-quart" data-easing2="ease-in-out-quart" data-w-id="58db7844-5919-d71b-dd74-2323ed8dffe9" role="banner" class="header w-nav">
       <div class="container-default header-container w-container">
@@ -107,39 +108,17 @@
     <div class="section blog-featured hgh">
       <div class="container-default w-container">
         <div data-w-id="fa9a39f2-62ba-cb6b-bbe9-5d8c41b6fe69" style="opacity:0" class="w-layout-grid blog-section-grid">
-          <div class="w-dyn-list">
-            <div role="list" class="w-dyn-items">
-              <div role="listitem" class="post-featured-first-item w-dyn-item">
-                <a href="#" class="card post-featured-first w-inline-block">
-                  <div class="image-wrapper card-post-featured-first"><img src="" alt="" class="image card-post-featured-first w-dyn-bind-empty">
-                    <div class="card-post-featured-first-category-wrapper"><img src="" alt="" class="image card-post-featured-first-category-icon w-dyn-bind-empty">
-                      <div class="w-dyn-bind-empty"></div>
-                    </div>
-                  </div>
-                  <div class="card-post-featured-first-content">
-                    <div class="card-post-featured-first-date w-dyn-bind-empty"></div>
-                    <h2 class="title card-post-featured-first heading-size-h3 w-dyn-bind-empty"></h2>
-                  </div>
-                </a>
-              </div>
-            </div>
+          <!-- Featured Blog (Firebase) -->
+          <div id="blog-featured-container" class="w-dyn-list">
             <div class="empty-state w-dyn-empty">
-              <div>No items found.</div>
+              <div>Chargement...</div>
             </div>
           </div>
-          <div class="w-dyn-list">
-            <div role="list" class="post-featured-sidebar-grid w-dyn-items">
-              <div role="listitem" class="post-featured-item w-dyn-item">
-                <a href="#" class="card post-featured w-inline-block">
-                  <div class="image-wrapper card-post-featured"><img src="" alt="" class="image card-post-featured w-dyn-bind-empty"></div>
-                  <div class="card-post-featured-content">
-                    <h3 class="title card-post-featured heading-size-h4 w-dyn-bind-empty"></h3>
-                  </div>
-                </a>
-              </div>
-            </div>
+          
+          <!-- Sidebar Blogs (Firebase) -->
+          <div id="blog-sidebar-container" class="w-dyn-list">
             <div class="empty-state w-dyn-empty">
-              <div><br></div>
+              <div>Chargement...</div>
             </div>
           </div>
         </div>
@@ -178,32 +157,10 @@
             </div>
           </div>
         </div>
-        <div class="w-dyn-list">
-          <div role="list" class="blog-grid w-dyn-items">
-            <div data-w-id="4da45686-e6cf-a4f6-470d-171e76b24ac8" style="opacity:0" role="listitem" class="post-item w-dyn-item">
-              <a href="#" class="card post w-inline-block">
-                <div class="image-wrapper card-post"><img src="" alt="" class="image card-post w-dyn-bind-empty">
-                  <div class="card-post-category-wrapper"><img src="" alt="" class="image card-post-category-icon w-dyn-bind-empty">
-                    <div class="w-dyn-bind-empty"></div>
-                  </div>
-                </div>
-                <div class="card-post-content">
-                  <div class="card-post-date w-dyn-bind-empty"></div>
-                  <h3 class="title card-post w-dyn-bind-empty"></h3>
-                </div>
-              </a>
-            </div>
-          </div>
+        <!-- Blog Grid (Firebase) -->
+        <div id="blog-grid-container" class="w-dyn-list">
           <div class="empty-state w-dyn-empty">
-            <div>No items found.</div>
-          </div>
-          <div role="navigation" aria-label="List" class="w-pagination-wrapper">
-            <a href="#" aria-label="Previous Page" class="w-pagination-previous button-secondary pagination">
-              <div class="w-inline-block">Previous</div>
-            </a>
-            <a href="#" aria-label="Next Page" class="w-pagination-next button-secondary pagination">
-              <div class="w-inline-block">Next</div>
-            </a>
+            <div>Chargement des articles...</div>
           </div>
         </div>
       </div>
@@ -272,20 +229,191 @@
     </footer>
   </div>
   
-  <!-- Banner Modal Popup -->
+  <!-- Firebase Banner Modal Popup (dynamically populated) -->
   <div id="banner-modal">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title">Grande Ouverture du Centre Reed 2025</h2>
-        <button class="modal-close" aria-label="Fermer">&times;</button>
+        <h2 id="modal-title" class="modal-title"></h2>
+        <button class="modal-close" onclick="closeBannerModal()" aria-label="Fermer">&times;</button>
       </div>
       <div class="modal-body">
-        <p>Le contenu détaillé de cette annonce sera bientôt disponible.</p>
+        <div id="modal-image-container"></div>
+        <div id="modal-text"></div>
       </div>
     </div>
   </div>
   
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  
+  <!-- Firebase Config & Helpers -->
+  <script src="js/firebase-config.js"></script>
+  <script src="js/firestore-helpers.js"></script>
+  
+  <!-- Your existing scripts -->
   <script src="js/minimal-interactions.js" type="text/javascript"></script>
   <script src="js/site.js" type="text/javascript"></script>
+  
+  <!-- Firebase Banner -->
+  <script>
+    function showBannerModal() {
+      const modal = document.getElementById('banner-modal');
+      if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    
+    function closeBannerModal() {
+      const modal = document.getElementById('banner-modal');
+      if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    }
+    
+    document.getElementById('banner-modal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeBannerModal();
+      }
+    });
+    
+    async function loadFirebaseBanner() {
+      try {
+        const bannerData = await getActiveBannerMessage();
+        
+        if (bannerData) {
+          const bannerDiv = document.getElementById('firebase-banner');
+          bannerDiv.innerHTML = `⚠️ ${bannerData.shortMessage} : <a href="#" class="banner-learn-more" onclick="event.preventDefault(); showBannerModal();">En savoir plus</a>`;
+          bannerDiv.style.display = 'block';
+          
+          document.getElementById('modal-title').textContent = bannerData.fullTitle || '';
+          const imageContainer = document.getElementById('modal-image-container');
+          if (bannerData.image) {
+            imageContainer.innerHTML = `<img src="${bannerData.image}" alt="${bannerData.fullTitle}" class="modal-image">`;
+          } else {
+            imageContainer.innerHTML = '';
+          }
+          document.getElementById('modal-text').innerHTML = bannerData.fullText || '';
+          window.currentBanner = bannerData;
+        }
+      } catch (error) {
+        console.error('Error loading banner:', error);
+      }
+    }
+    
+    document.addEventListener('DOMContentLoaded', loadFirebaseBanner);
+    
+    // Load blog articles from Firebase
+    async function loadBlogArticles() {
+      try {
+        const articles = await getBlogArticles(20); // Get up to 20 articles
+        
+        console.log('Blog articles loaded:', articles); // Debug
+        
+        if (articles.length > 0) {
+          // Featured article (first one)
+          const featured = articles[0];
+          const featuredContainer = document.getElementById('blog-featured-container');
+          const featuredDate = featured.publishDate?.toDate ? 
+            featured.publishDate.toDate().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
+          const featuredImage = featured.featuredImage && featured.featuredImage.trim() !== '' 
+            ? featured.featuredImage 
+            : 'https://via.placeholder.com/600x400/0f437f/ffffff?text=Article';
+          
+          featuredContainer.innerHTML = `
+            <div role="list" class="w-dyn-items">
+              <div role="listitem" class="post-featured-first-item w-dyn-item">
+                <a href="detail_blog.html?slug=${featured.slug}" class="card post-featured-first w-inline-block">
+                  <div class="image-wrapper card-post-featured-first">
+                    <img src="${featuredImage}" alt="${featured.title}" class="image card-post-featured-first">
+                    <div class="card-post-featured-first-category-wrapper">
+                      <div>${featured.category}</div>
+                    </div>
+                  </div>
+                  <div class="card-post-featured-first-content">
+                    <div class="card-post-featured-first-date">${featuredDate}</div>
+                    <h2 class="title card-post-featured-first heading-size-h3">${featured.title}</h2>
+                  </div>
+                </a>
+              </div>
+            </div>
+          `;
+          
+          // Sidebar articles (next 2)
+          const sidebarArticles = articles.slice(1, 3);
+          const sidebarContainer = document.getElementById('blog-sidebar-container');
+          
+          if (sidebarArticles.length > 0) {
+            let sidebarHTML = '<div role="list" class="post-featured-sidebar-grid w-dyn-items">';
+            sidebarArticles.forEach(article => {
+              const sidebarImage = article.featuredImage && article.featuredImage.trim() !== '' 
+                ? article.featuredImage 
+                : 'https://via.placeholder.com/400x300/0f437f/ffffff?text=Article';
+              
+              sidebarHTML += `
+                <div role="listitem" class="post-featured-item w-dyn-item">
+                  <a href="detail_blog.html?slug=${article.slug}" class="card post-featured w-inline-block">
+                    <div class="image-wrapper card-post-featured">
+                      <img src="${sidebarImage}" alt="${article.title}" class="image card-post-featured">
+                    </div>
+                    <div class="card-post-featured-content">
+                      <h3 class="title card-post-featured heading-size-h4">${article.title}</h3>
+                    </div>
+                  </a>
+                </div>
+              `;
+            });
+            sidebarHTML += '</div>';
+            sidebarContainer.innerHTML = sidebarHTML;
+          }
+          
+          // All articles grid (all articles)
+          const gridContainer = document.getElementById('blog-grid-container');
+          let gridHTML = '<div role="list" class="blog-grid w-dyn-items">';
+          
+          articles.forEach(article => {
+            const gridDate = article.publishDate?.toDate ? 
+              article.publishDate.toDate().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
+            const gridImage = article.featuredImage && article.featuredImage.trim() !== '' 
+              ? article.featuredImage 
+              : 'https://via.placeholder.com/400x300/0f437f/ffffff?text=Article';
+            
+            gridHTML += `
+              <div data-w-id="4da45686-e6cf-a4f6-470d-171e76b24ac8" style="opacity:1" role="listitem" class="post-item w-dyn-item">
+                <a href="detail_blog.html?slug=${article.slug}" class="card post w-inline-block">
+                  <div class="image-wrapper card-post">
+                    <img src="${gridImage}" alt="${article.title}" class="image card-post">
+                    <div class="card-post-category-wrapper">
+                      <div>${article.category}</div>
+                    </div>
+                  </div>
+                  <div class="card-post-content">
+                    <div class="card-post-date">${gridDate}</div>
+                    <h3 class="title card-post">${article.title}</h3>
+                  </div>
+                </a>
+              </div>
+            `;
+          });
+          
+          gridHTML += '</div>';
+          gridContainer.innerHTML = gridHTML;
+          
+        } else {
+          // No articles found
+          document.getElementById('blog-featured-container').innerHTML = '<div class="empty-state w-dyn-empty"><div>Aucun article disponible.</div></div>';
+          document.getElementById('blog-sidebar-container').innerHTML = '<div class="empty-state w-dyn-empty"><div>Aucun article disponible.</div></div>';
+          document.getElementById('blog-grid-container').innerHTML = '<div class="empty-state w-dyn-empty"><div>Aucun article disponible.</div></div>';
+        }
+      } catch (error) {
+        console.error('Error loading blog articles:', error);
+      }
+    }
+    
+    // Load blogs on page load
+    document.addEventListener('DOMContentLoaded', loadBlogArticles);
+  </script>
 </body>
 </html>

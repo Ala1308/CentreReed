@@ -117,7 +117,6 @@ async function getBlogArticles(limit = 10) {
   try {
     const snapshot = await db.collection('blogArticles')
       .where('published', '==', true)
-      .orderBy('publishDate', 'desc')
       .limit(limit)
       .get();
     
@@ -129,9 +128,19 @@ async function getBlogArticles(limit = 10) {
       });
     });
     
+    console.log('Raw blog articles from Firestore:', articles); // Debug
+    
+    // Sort in JavaScript
+    articles.sort((a, b) => {
+      const dateA = a.publishDate?.toMillis() || 0;
+      const dateB = b.publishDate?.toMillis() || 0;
+      return dateB - dateA; // Descending order
+    });
+    
     return articles;
   } catch (error) {
     console.error('Error fetching blog articles:', error);
+    console.error('Full error details:', error.message);
     return [];
   }
 }
@@ -170,7 +179,6 @@ async function getBlogArticlesByCategory(category, limit = 10) {
     const snapshot = await db.collection('blogArticles')
       .where('category', '==', category)
       .where('published', '==', true)
-      .orderBy('publishDate', 'desc')
       .limit(limit)
       .get();
     
@@ -180,6 +188,13 @@ async function getBlogArticlesByCategory(category, limit = 10) {
         id: doc.id,
         ...doc.data()
       });
+    });
+    
+    // Sort in JavaScript
+    articles.sort((a, b) => {
+      const dateA = a.publishDate?.toMillis() || 0;
+      const dateB = b.publishDate?.toMillis() || 0;
+      return dateB - dateA;
     });
     
     return articles;
@@ -198,10 +213,10 @@ async function getBlogArticlesByCategory(category, limit = 10) {
  */
 async function getResourcesByCategory(category, limit = 20) {
   try {
+    // Query without orderBy to avoid needing composite index
     const snapshot = await db.collection('resources')
       .where('category', '==', category)
       .where('published', '==', true)
-      .orderBy('createdAt', 'desc')
       .limit(limit)
       .get();
     
@@ -213,9 +228,17 @@ async function getResourcesByCategory(category, limit = 20) {
       });
     });
     
+    // Sort in JavaScript instead
+    resources.sort((a, b) => {
+      const dateA = a.createdAt?.toMillis() || 0;
+      const dateB = b.createdAt?.toMillis() || 0;
+      return dateB - dateA; // Descending order
+    });
+    
     return resources;
   } catch (error) {
     console.error('Error fetching resources:', error);
+    console.error('Full error:', error.message);
     return [];
   }
 }
@@ -227,7 +250,6 @@ async function getAllResources(limit = 50) {
   try {
     const snapshot = await db.collection('resources')
       .where('published', '==', true)
-      .orderBy('createdAt', 'desc')
       .limit(limit)
       .get();
     
@@ -237,6 +259,13 @@ async function getAllResources(limit = 50) {
         id: doc.id,
         ...doc.data()
       });
+    });
+    
+    // Sort in JavaScript
+    resources.sort((a, b) => {
+      const dateA = a.createdAt?.toMillis() || 0;
+      const dateB = b.createdAt?.toMillis() || 0;
+      return dateB - dateA;
     });
     
     return resources;

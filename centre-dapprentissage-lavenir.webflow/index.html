@@ -39,7 +39,9 @@
 </script>
 </head>
 <body>
-  <div class="top-banner"></div>
+  <!-- Top Banner - Firebase Dynamic Content -->
+  <div id="firebase-banner" class="top-banner"></div>
+  
   <div style="opacity:0" class="page-wrapper">
     <div data-collapse="medium" data-animation="over-right" data-duration="500" data-easing="ease-in-out-quart" data-easing2="ease-in-out-quart" data-w-id="58db7844-5919-d71b-dd74-2323ed8dffe9" role="banner" class="header w-nav">
       <div class="container-default header-container w-container">
@@ -356,39 +358,17 @@
           </div>
         </div>
         <div data-w-id="99f5b69c-bc1c-20c2-bc45-3f72c3f97942" style="opacity:0" class="w-layout-grid blog-section-grid">
-          <div class="w-dyn-list">
-            <div role="list" class="w-dyn-items">
-              <div role="listitem" class="post-featured-first-item w-dyn-item">
-                <a href="#" class="card post-featured-first w-inline-block">
-                  <div class="image-wrapper card-post-featured-first"><img src="" alt="" class="image card-post-featured-first w-dyn-bind-empty">
-                    <div class="card-post-featured-first-category-wrapper"><img src="" alt="" class="image card-post-featured-first-category-icon w-dyn-bind-empty">
-                      <div class="w-dyn-bind-empty"></div>
-                    </div>
-                  </div>
-                  <div class="card-post-featured-first-content">
-                    <div class="card-post-featured-first-date w-dyn-bind-empty"></div>
-                    <h3 class="title card-post-featured-first w-dyn-bind-empty"></h3>
-                  </div>
-                </a>
-              </div>
-            </div>
+          <!-- Featured Blog Post (Firebase) -->
+          <div id="featured-blog-container" class="w-dyn-list">
             <div class="empty-state w-dyn-empty">
-              <div>No items found.</div>
+              <div>Chargement...</div>
             </div>
           </div>
-          <div class="w-dyn-list">
-            <div role="list" class="post-featured-sidebar-grid w-dyn-items">
-              <div role="listitem" class="post-featured-item w-dyn-item">
-                <a href="#" class="card post-featured w-inline-block">
-                  <div class="image-wrapper card-post-featured"><img src="" alt="" class="image card-post-featured w-dyn-bind-empty"></div>
-                  <div class="card-post-featured-content">
-                    <h4 class="title card-post-featured w-dyn-bind-empty"></h4>
-                  </div>
-                </a>
-              </div>
-            </div>
+          
+          <!-- Sidebar Blog Posts (Firebase) -->
+          <div id="sidebar-blogs-container" class="w-dyn-list">
             <div class="empty-state w-dyn-empty">
-              <div>No items found.</div>
+              <div>Chargement...</div>
             </div>
           </div>
         </div>
@@ -461,20 +441,177 @@
     </div>
   </div>
   
-  <!-- Banner Modal Popup -->
+  <!-- Firebase Banner Modal Popup (dynamically populated) -->
   <div id="banner-modal">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title">Grande Ouverture du Centre Reed 2025</h2>
-        <button class="modal-close" aria-label="Fermer">&times;</button>
+        <h2 id="modal-title" class="modal-title"></h2>
+        <button class="modal-close" onclick="closeBannerModal()" aria-label="Fermer">&times;</button>
       </div>
       <div class="modal-body">
-        <p>Le contenu détaillé de cette annonce sera bientôt disponible.</p>
+        <div id="modal-image-container"></div>
+        <div id="modal-text"></div>
       </div>
     </div>
   </div>
   
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  
+  <!-- Firebase Config & Helpers -->
+  <script src="js/firebase-config.js"></script>
+  <script src="js/firestore-helpers.js"></script>
+  
+  <!-- Your existing scripts -->
   <script src="js/minimal-interactions.js" type="text/javascript"></script>
   <script src="js/site.js" type="text/javascript"></script>
+  
+  <!-- Initialize Firebase Banner -->
+  <script>
+    // Function to show modal
+    function showBannerModal() {
+      const modal = document.getElementById('banner-modal');
+      if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    
+    // Function to close modal
+    function closeBannerModal() {
+      const modal = document.getElementById('banner-modal');
+      if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    }
+    
+    // Close modal when clicking outside
+    document.getElementById('banner-modal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeBannerModal();
+      }
+    });
+    
+    // Load banner from Firebase
+    async function loadFirebaseBanner() {
+      try {
+        const bannerData = await getActiveBannerMessage();
+        
+        if (bannerData) {
+          const bannerDiv = document.getElementById('firebase-banner');
+          
+           // Display banner with short message (original inline style)
+           bannerDiv.innerHTML = `⚠️ ${bannerData.shortMessage} : <a href="#" class="banner-learn-more" onclick="event.preventDefault(); showBannerModal();">En savoir plus</a>`;
+           bannerDiv.style.display = 'block';
+          
+          // Populate modal with full details
+          document.getElementById('modal-title').textContent = bannerData.fullTitle || '';
+          
+          // Add image if exists
+          const imageContainer = document.getElementById('modal-image-container');
+          if (bannerData.image) {
+            imageContainer.innerHTML = `<img src="${bannerData.image}" alt="${bannerData.fullTitle}" class="modal-image">`;
+          } else {
+            imageContainer.innerHTML = '';
+          }
+          
+          // Add full text
+          document.getElementById('modal-text').innerHTML = bannerData.fullText || '';
+          
+          // Store banner data globally for reference
+          window.currentBanner = bannerData;
+        }
+      } catch (error) {
+        console.error('Error loading banner:', error);
+      }
+    }
+    
+    // Load banner when page loads
+    document.addEventListener('DOMContentLoaded', loadFirebaseBanner);
+    
+    // Load blogs from Firebase
+    async function loadFirebaseBlogs() {
+      try {
+        const articles = await getBlogArticles(4); // Get 4 latest articles
+        
+        console.log('Blog articles fetched:', articles); // Debug log
+        
+        if (articles.length > 0) {
+          // Featured blog (first article)
+          const featured = articles[0];
+          const featuredContainer = document.getElementById('featured-blog-container');
+          
+          const featuredDate = featured.publishDate?.toDate ? 
+            featured.publishDate.toDate().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
+          
+          // Use placeholder image if no featured image
+          const imageUrl = featured.featuredImage && featured.featuredImage.trim() !== '' 
+            ? featured.featuredImage 
+            : 'https://via.placeholder.com/600x400/0f437f/ffffff?text=Article';
+          
+          featuredContainer.innerHTML = `
+            <div role="list" class="w-dyn-items">
+              <div role="listitem" class="post-featured-first-item w-dyn-item">
+                <a href="detail_blog.html?slug=${featured.slug}" class="card post-featured-first w-inline-block">
+                  <div class="image-wrapper card-post-featured-first">
+                    <img src="${imageUrl}" alt="${featured.title}" class="image card-post-featured-first">
+                    <div class="card-post-featured-first-category-wrapper">
+                      <div>${featured.category}</div>
+                    </div>
+                  </div>
+                  <div class="card-post-featured-first-content">
+                    <div class="card-post-featured-first-date">${featuredDate}</div>
+                    <h3 class="title card-post-featured-first">${featured.title}</h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+          `;
+          
+          // Sidebar blogs (remaining articles)
+          const sidebarArticles = articles.slice(1, 4); // Get next 3 articles
+          const sidebarContainer = document.getElementById('sidebar-blogs-container');
+          
+          if (sidebarArticles.length > 0) {
+            let sidebarHTML = '<div role="list" class="post-featured-sidebar-grid w-dyn-items">';
+            
+            sidebarArticles.forEach(article => {
+              // Use placeholder image if no featured image
+              const sidebarImageUrl = article.featuredImage && article.featuredImage.trim() !== '' 
+                ? article.featuredImage 
+                : 'https://via.placeholder.com/400x300/0f437f/ffffff?text=Article';
+              
+              sidebarHTML += `
+                <div role="listitem" class="post-featured-item w-dyn-item">
+                  <a href="detail_blog.html?slug=${article.slug}" class="card post-featured w-inline-block">
+                    <div class="image-wrapper card-post-featured">
+                      <img src="${sidebarImageUrl}" alt="${article.title}" class="image card-post-featured">
+                    </div>
+                    <div class="card-post-featured-content">
+                      <h4 class="title card-post-featured">${article.title}</h4>
+                    </div>
+                  </a>
+                </div>
+              `;
+            });
+            
+            sidebarHTML += '</div>';
+            sidebarContainer.innerHTML = sidebarHTML;
+          }
+        } else {
+          // No articles found
+          document.getElementById('featured-blog-container').innerHTML = '<div class="empty-state w-dyn-empty"><div>Aucun article disponible.</div></div>';
+          document.getElementById('sidebar-blogs-container').innerHTML = '<div class="empty-state w-dyn-empty"><div>Aucun article disponible.</div></div>';
+        }
+      } catch (error) {
+        console.error('Error loading blogs:', error);
+      }
+    }
+    
+    // Load blogs on page load
+    document.addEventListener('DOMContentLoaded', loadFirebaseBlogs);
+  </script>
 </body>
 </html>
