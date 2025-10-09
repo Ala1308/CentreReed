@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Ajouter des données</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #e0e0e0;
+    }
+
+    .tab {
+      padding: 10px 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      color: #666;
+      transition: all 0.3s;
+    }
+
+    .tab.active {
+      color: #007bff;
+      border-bottom: 2px solid #007bff;
+      margin-bottom: -2px;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+      font-family: inherit;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .btn {
+      background: #007bff;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #0056b3;
+    }
+
+    .success-message {
+      background: #d4edda;
+      color: #155724;
+      padding: 12px;
+      border-radius: 4px;
+      margin-top: 20px;
+      display: none;
+    }
+
+    .error-message {
+      background: #f8d7da;
+      color: #721c24;
+      padding: 12px;
+      border-radius: 4px;
+      margin-top: 20px;
+      display: none;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: auto;
+    }
+
+    .helper-text {
+      font-size: 12px;
+      color: #666;
+      margin-top: 5px;
+    }
+
+    /* Rich Text Editor Styles */
+    .editor-toolbar {
+      display: flex;
+      gap: 5px;
+      margin-bottom: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border: 1px solid #ddd;
+      border-bottom: none;
+      border-radius: 4px 4px 0 0;
+    }
+
+    .editor-toolbar button {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .editor-toolbar button:hover {
+      background: #e9ecef;
+      border-color: #adb5bd;
+    }
+
+    .rich-text-editor {
+      min-height: 200px;
+      max-height: 400px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      border-radius: 0 0 4px 4px;
+      padding: 12px;
+      background: white;
+      font-family: inherit;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .rich-text-editor:focus {
+      outline: none;
+      border-color: #007bff;
+    }
+
+    .rich-text-editor[placeholder]:empty:before {
+      content: attr(placeholder);
+      color: #999;
+    }
+
+    .rich-text-editor ul,
+    .rich-text-editor ol {
+      margin: 10px 0;
+      padding-left: 30px;
+    }
+
+    .rich-text-editor li {
+      margin: 5px 0;
+    }
+
+    .rich-text-editor a {
+      color: #007bff;
+      text-decoration: underline;
+    }
+
+    .rich-text-editor p {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📝 Admin - Ajouter des données</h1>
+
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('banner')">Message Bannière</button>
+      <button class="tab" onclick="switchTab('blog')">Article de Blog</button>
+      <button class="tab" onclick="switchTab('resource')">Ressource</button>
+    </div>
+
+    <!-- Banner Message Form -->
+    <div id="banner-tab" class="tab-content active">
+      <h2>Gérer le message de bannière</h2>
+      <p style="color: #666; margin-bottom: 20px;">⚠️ Il n'y a qu'une seule bannière active à la fois. Cette mise à jour remplacera la bannière actuelle.</p>
+      
+      <form id="banner-form">
+        <div class="form-group">
+          <label>Message court (affiché sur la bannière) *</label>
+          <input type="text" name="shortMessage" required placeholder="Ex: Nouveauté - Inscription ouverte pour la session d'automne!" maxlength="150">
+          <div class="helper-text">Maximum 150 caractères</div>
+        </div>
+
+        <div class="form-group">
+          <label>Titre complet (popup) *</label>
+          <input type="text" name="fullTitle" required placeholder="Ex: Inscriptions ouvertes pour la session d'automne 2025">
+        </div>
+
+        <div class="form-group">
+          <label>Texte complet (popup) *</label>
+          <div class="editor-toolbar">
+            <button type="button" onclick="formatText('bold')" title="Gras"><b>B</b></button>
+            <button type="button" onclick="formatText('italic')" title="Italique"><i>I</i></button>
+            <button type="button" onclick="formatText('underline')" title="Souligné"><u>U</u></button>
+            <button type="button" onclick="formatText('insertUnorderedList')" title="Liste à puces">• Liste</button>
+            <button type="button" onclick="formatText('insertOrderedList')" title="Liste numérotée">1. Liste</button>
+            <button type="button" onclick="insertLink()" title="Lien">🔗 Lien</button>
+          </div>
+          <div id="fullTextEditor" contenteditable="true" class="rich-text-editor" placeholder="Écrivez votre texte ici (max 400 mots)..."></div>
+          <div class="helper-text">
+            <span id="wordCount">0 / 400 mots</span> - 
+            Utilisez la barre d'outils pour formater le texte
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Image (URL)</label>
+          <input type="url" name="image" placeholder="https://example.com/image.jpg">
+          <div class="helper-text">URL de l'image qui apparaîtra dans le popup</div>
+        </div>
+
+        <div class="form-group">
+          <label>Type *</label>
+          <select name="type" required>
+            <option value="info">Info (bleu)</option>
+            <option value="warning">Attention (jaune)</option>
+            <option value="success">Succès (vert)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Date de début</label>
+          <input type="datetime-local" name="startDate">
+          <div class="helper-text">Laisser vide pour commencer immédiatement</div>
+        </div>
+
+        <div class="form-group">
+          <label>Date de fin</label>
+          <input type="datetime-local" name="endDate">
+          <div class="helper-text">Laisser vide pour aucune date de fin</div>
+        </div>
+
+        <div class="form-group checkbox-group">
+          <input type="checkbox" name="active" id="banner-active" checked>
+          <label for="banner-active">Activer immédiatement</label>
+        </div>
+
+        <button type="submit" class="btn">Mettre à jour la bannière</button>
+      </form>
+      <div id="banner-success" class="success-message"></div>
+      <div id="banner-error" class="error-message"></div>
+    </div>
+
+    <!-- Blog Article Form -->
+    <div id="blog-tab" class="tab-content">
+      <h2>Ajouter un article de blog</h2>
+      <form id="blog-form">
+        <div class="form-group">
+          <label>Titre *</label>
+          <input type="text" name="title" required placeholder="Ex: 5 conseils pour réussir">
+        </div>
+
+        <div class="form-group">
+          <label>Slug (URL) *</label>
+          <input type="text" name="slug" required placeholder="Ex: 5-conseils-pour-reussir">
+          <div class="helper-text">Utilisez des tirets, pas d'espaces, lettres minuscules</div>
+        </div>
+
+        <div class="form-group">
+          <label>Extrait *</label>
+          <textarea name="excerpt" required placeholder="Court résumé de l'article"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Contenu complet *</label>
+          <textarea name="content" required style="min-height: 200px;" placeholder="Contenu HTML accepté"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Auteur *</label>
+          <input type="text" name="author" required placeholder="Ex: L'équipe du Centre">
+        </div>
+
+        <div class="form-group">
+          <label>Catégorie *</label>
+          <select name="category" required>
+            <option value="Conseils">Conseils</option>
+            <option value="Nouvelles">Nouvelles</option>
+            <option value="Tutoriels">Tutoriels</option>
+            <option value="Événements">Événements</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Image de couverture (URL)</label>
+          <input type="url" name="featuredImage" placeholder="https://example.com/image.jpg">
+        </div>
+
+        <div class="form-group">
+          <label>Date de publication *</label>
+          <input type="datetime-local" name="publishDate" required>
+        </div>
+
+        <div class="form-group checkbox-group">
+          <input type="checkbox" name="published" id="blog-published" checked>
+          <label for="blog-published">Publier immédiatement</label>
+        </div>
+
+        <button type="submit" class="btn">Ajouter l'article</button>
+      </form>
+      <div id="blog-success" class="success-message"></div>
+      <div id="blog-error" class="error-message"></div>
+    </div>
+
+    <!-- Resource Form -->
+    <div id="resource-tab" class="tab-content">
+      <h2>Ajouter une ressource</h2>
+      <form id="resource-form">
+        <div class="form-group">
+          <label>Titre *</label>
+          <input type="text" name="title" required placeholder="Ex: Guide de mathématiques">
+        </div>
+
+        <div class="form-group">
+          <label>Description *</label>
+          <textarea name="description" required placeholder="Description de la ressource"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Catégorie *</label>
+          <select name="category" required>
+            <option value="students">Élèves</option>
+            <option value="parents">Parents</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Type de ressource *</label>
+          <select name="type" required>
+            <option value="pdf">PDF</option>
+            <option value="link">Lien externe</option>
+            <option value="video">Vidéo</option>
+            <option value="document">Document</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>URL du fichier *</label>
+          <input type="url" name="fileUrl" required placeholder="https://example.com/resource.pdf">
+        </div>
+
+        <div class="form-group">
+          <label>Image miniature (URL)</label>
+          <input type="url" name="thumbnailUrl" placeholder="https://example.com/thumbnail.jpg">
+        </div>
+
+        <div class="form-group">
+          <label>Matière *</label>
+          <select name="subject" required>
+            <option value="mathématiques">Mathématiques</option>
+            <option value="français">Français</option>
+            <option value="sciences">Sciences</option>
+            <option value="histoire">Histoire</option>
+            <option value="anglais">Anglais</option>
+            <option value="général">Général</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Niveau scolaire</label>
+          <select name="gradeLevel" multiple size="4">
+            <option value="primaire-1-3">Primaire 1-3</option>
+            <option value="primaire-4-6">Primaire 4-6</option>
+            <option value="secondaire">Secondaire</option>
+            <option value="tous">Tous niveaux</option>
+          </select>
+          <div class="helper-text">Maintenez Ctrl/Cmd pour sélectionner plusieurs options</div>
+        </div>
+
+        <div class="form-group checkbox-group">
+          <input type="checkbox" name="published" id="resource-published" checked>
+          <label for="resource-published">Publier immédiatement</label>
+        </div>
+
+        <button type="submit" class="btn">Ajouter la ressource</button>
+      </form>
+      <div id="resource-success" class="success-message"></div>
+      <div id="resource-error" class="error-message"></div>
+    </div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+  <!-- Firebase Configuration -->
+  <script src="../js/firebase-config.js"></script>
+
+  <script>
+    // Tab switching
+    function switchTab(tabName) {
+      // Hide all tabs
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+
+      // Show selected tab
+      document.getElementById(tabName + '-tab').classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    // Rich Text Editor Functions
+    function formatText(command) {
+      document.execCommand(command, false, null);
+      document.getElementById('fullTextEditor').focus();
+    }
+
+    function insertLink() {
+      const url = prompt('Entrez l\'URL du lien:');
+      if (url) {
+        document.execCommand('createLink', false, url);
+        document.getElementById('fullTextEditor').focus();
+      }
+    }
+
+    // Word count for rich text editor
+    function countWords(text) {
+      const plainText = text.replace(/<[^>]*>/g, ' ').trim();
+      if (!plainText) return 0;
+      return plainText.split(/\s+/).length;
+    }
+
+    // Update word count
+    const editor = document.getElementById('fullTextEditor');
+    if (editor) {
+      editor.addEventListener('input', () => {
+        const wordCount = countWords(editor.innerHTML);
+        document.getElementById('wordCount').textContent = `${wordCount} / 400 mots`;
+        
+        if (wordCount > 400) {
+          document.getElementById('wordCount').style.color = '#dc3545';
+        } else {
+          document.getElementById('wordCount').style.color = '#666';
+        }
+      });
+    }
+
+    // Banner form submission (UPDATES the single banner document)
+    document.getElementById('banner-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const successMsg = document.getElementById('banner-success');
+      const errorMsg = document.getElementById('banner-error');
+
+      try {
+        const fullTextEditor = document.getElementById('fullTextEditor');
+        const fullText = fullTextEditor.innerHTML.trim();
+        
+        // Check word count
+        const wordCount = countWords(fullText);
+        if (wordCount > 400) {
+          errorMsg.textContent = '❌ Le texte complet dépasse 400 mots (' + wordCount + ' mots)';
+          errorMsg.style.display = 'block';
+          successMsg.style.display = 'none';
+          return;
+        }
+
+        const data = {
+          shortMessage: form.shortMessage.value,
+          fullTitle: form.fullTitle.value,
+          fullText: fullText,
+          image: form.image.value || '',
+          type: form.type.value,
+          active: form.active.checked,
+          updatedAt: firebase.firestore.Timestamp.now()
+        };
+
+        // Add dates only if provided
+        if (form.startDate.value) {
+          data.startDate = firebase.firestore.Timestamp.fromDate(new Date(form.startDate.value));
+        }
+        if (form.endDate.value) {
+          data.endDate = firebase.firestore.Timestamp.fromDate(new Date(form.endDate.value));
+        }
+
+        // Set/update the single banner document with ID 'current'
+        await db.collection('bannerMessages').doc('current').set(data, { merge: true });
+        
+        successMsg.textContent = '✅ Bannière mise à jour avec succès!';
+        successMsg.style.display = 'block';
+        errorMsg.style.display = 'none';
+        
+        setTimeout(() => { successMsg.style.display = 'none'; }, 5000);
+      } catch (error) {
+        errorMsg.textContent = '❌ Erreur: ' + error.message;
+        errorMsg.style.display = 'block';
+        successMsg.style.display = 'none';
+      }
+    });
+
+    // Blog form submission
+    document.getElementById('blog-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const successMsg = document.getElementById('blog-success');
+      const errorMsg = document.getElementById('blog-error');
+
+      try {
+        const data = {
+          title: form.title.value,
+          slug: form.slug.value,
+          excerpt: form.excerpt.value,
+          content: form.content.value,
+          author: form.author.value,
+          category: form.category.value,
+          featuredImage: form.featuredImage.value || '',
+          published: form.published.checked,
+          publishDate: firebase.firestore.Timestamp.fromDate(new Date(form.publishDate.value)),
+          createdAt: firebase.firestore.Timestamp.now(),
+          updatedAt: firebase.firestore.Timestamp.now()
+        };
+
+        await db.collection('blogArticles').add(data);
+        
+        successMsg.textContent = '✅ Article de blog ajouté avec succès!';
+        successMsg.style.display = 'block';
+        errorMsg.style.display = 'none';
+        form.reset();
+        
+        setTimeout(() => { successMsg.style.display = 'none'; }, 5000);
+      } catch (error) {
+        errorMsg.textContent = '❌ Erreur: ' + error.message;
+        errorMsg.style.display = 'block';
+        successMsg.style.display = 'none';
+      }
+    });
+
+    // Resource form submission
+    document.getElementById('resource-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const successMsg = document.getElementById('resource-success');
+      const errorMsg = document.getElementById('resource-error');
+
+      try {
+        // Get selected grade levels
+        const gradeLevelSelect = form.gradeLevel;
+        const selectedGrades = Array.from(gradeLevelSelect.selectedOptions).map(opt => opt.value);
+
+        const data = {
+          title: form.title.value,
+          description: form.description.value,
+          category: form.category.value,
+          type: form.type.value,
+          fileUrl: form.fileUrl.value,
+          thumbnailUrl: form.thumbnailUrl.value || '',
+          subject: form.subject.value,
+          gradeLevel: selectedGrades.length > 0 ? selectedGrades : ['tous'],
+          published: form.published.checked,
+          createdAt: firebase.firestore.Timestamp.now()
+        };
+
+        await db.collection('resources').add(data);
+        
+        successMsg.textContent = '✅ Ressource ajoutée avec succès!';
+        successMsg.style.display = 'block';
+        errorMsg.style.display = 'none';
+        form.reset();
+        
+        setTimeout(() => { successMsg.style.display = 'none'; }, 5000);
+      } catch (error) {
+        errorMsg.textContent = '❌ Erreur: ' + error.message;
+        errorMsg.style.display = 'block';
+        successMsg.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
+

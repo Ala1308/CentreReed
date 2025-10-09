@@ -1,0 +1,256 @@
+/* Banner Popup Styles */
+
+/* Banner container */
+#banner-message {
+  position: relative;
+  z-index: 1000;
+}
+
+.banner-info,
+.banner-warning,
+.banner-success {
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  border-bottom: 2px solid #bee5eb;
+}
+
+.banner-warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border-bottom: 2px solid #ffeaa7;
+}
+
+.banner-success {
+  background-color: #d4edda;
+  color: #155724;
+  border-bottom: 2px solid #c3e6cb;
+}
+
+.banner-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.banner-content p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.banner-learn-more {
+  background: transparent;
+  border: 2px solid currentColor;
+  color: inherit;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.banner-learn-more:hover {
+  background: currentColor;
+  color: white;
+}
+
+/* Popup Overlay */
+.banner-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Popup Content */
+.banner-popup-content {
+  background: white;
+  border-radius: 12px;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 40px;
+  animation: slideUp 0.3s ease;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Close Button */
+.banner-popup-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 32px;
+  color: #999;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  line-height: 1;
+}
+
+.banner-popup-close:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+/* Popup Image */
+.banner-popup-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+/* Popup Title */
+.banner-popup-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+/* Popup Text */
+.banner-popup-text {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #333;
+}
+
+/* Rich text formatting support */
+.banner-popup-text p {
+  margin-bottom: 16px;
+}
+
+.banner-popup-text p:last-child {
+  margin-bottom: 0;
+}
+
+.banner-popup-text ul,
+.banner-popup-text ol {
+  margin: 16px 0;
+  padding-left: 30px;
+}
+
+.banner-popup-text li {
+  margin-bottom: 8px;
+}
+
+.banner-popup-text strong,
+.banner-popup-text b {
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.banner-popup-text em,
+.banner-popup-text i {
+  font-style: italic;
+}
+
+.banner-popup-text u {
+  text-decoration: underline;
+}
+
+.banner-popup-text a {
+  color: #007bff;
+  text-decoration: none;
+  border-bottom: 1px solid #007bff;
+  transition: color 0.3s ease;
+}
+
+.banner-popup-text a:hover {
+  color: #0056b3;
+  border-bottom-color: #0056b3;
+}
+
+.banner-popup-text h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  color: #1a1a1a;
+}
+
+.banner-popup-text h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #1a1a1a;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .banner-popup-content {
+    padding: 30px 20px;
+    margin: 10px;
+  }
+
+  .banner-popup-title {
+    font-size: 24px;
+  }
+
+  .banner-popup-text {
+    font-size: 15px;
+  }
+
+  .banner-content {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .banner-learn-more {
+    width: 100%;
+  }
+}
+
