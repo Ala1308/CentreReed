@@ -1,10 +1,60 @@
 // Shared site behaviors: banner content + header/top-banner scroll behavior
 (function(){
-  var BANNER_HTML = '⚠️ Grande Ouverture du Centre Reed 2025 : <a href="#">En savoir plus</a>';
+  var BANNER_HTML = '⚠️ Grande Ouverture du Centre Reed 2025 : <a href="#" class="banner-learn-more">En savoir plus</a>';
 
   function setBanner(){
     var banner = document.querySelector('.top-banner');
     if(banner){ banner.innerHTML = BANNER_HTML; }
+    
+    // Add event listener to "En savoir plus" link
+    var learnMoreLink = banner.querySelector('.banner-learn-more');
+    if(learnMoreLink){
+      learnMoreLink.addEventListener('click', function(e){
+        e.preventDefault();
+        openBannerModal();
+      });
+    }
+  }
+
+  function openBannerModal(){
+    var modal = document.getElementById('banner-modal');
+    if(modal){
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+  }
+
+  function closeBannerModal(){
+    var modal = document.getElementById('banner-modal');
+    if(modal){
+      modal.style.display = 'none';
+      document.body.style.overflow = ''; // Restore scrolling
+    }
+  }
+
+  function initBannerModal(){
+    var modal = document.getElementById('banner-modal');
+    if(!modal) return;
+
+    // Close button
+    var closeBtn = modal.querySelector('.modal-close');
+    if(closeBtn){
+      closeBtn.addEventListener('click', closeBannerModal);
+    }
+
+    // Close when clicking outside the modal content
+    modal.addEventListener('click', function(e){
+      if(e.target === modal){
+        closeBannerModal();
+      }
+    });
+
+    // Close with ESC key
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){
+        closeBannerModal();
+      }
+    });
   }
 
   function initScrollBehavior(){
@@ -77,9 +127,9 @@
   }
 
   if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', function(){ setBanner(); initScrollBehavior(); initVerticalCarousel(); });
+    document.addEventListener('DOMContentLoaded', function(){ setBanner(); initScrollBehavior(); initVerticalCarousel(); initBannerModal(); });
   } else {
-    setBanner(); initScrollBehavior(); initVerticalCarousel();
+    setBanner(); initScrollBehavior(); initVerticalCarousel(); initBannerModal();
   }
 })();
 

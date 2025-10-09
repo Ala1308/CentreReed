@@ -1,0 +1,465 @@
+/* ===================================================================
+   RESPONSIVE FIXES - Centre Reed
+   
+   Ce fichier COMPLÈTE le CSS Webflow existant sans le modifier.
+   Il corrige uniquement les problèmes de responsive pour mobile/tablette.
+   
+   À charger APRÈS centre-dapprentissage-lavenir.webflow.css
+   =================================================================== */
+
+/* ===================================================================
+   1. FIXES GÉNÉRAUX - Éviter débordements
+   =================================================================== */
+
+/* Empêcher le scroll horizontal */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* S'assurer que les images ne débordent jamais */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===================================================================
+   2. RESTAURER LES ÉLÉMENTS CACHÉS SUR MOBILE
+   =================================================================== */
+
+/* Ces éléments sont actuellement en display:none sur mobile/tablette
+   On les restaure et on les adapte plutôt que de les cacher */
+
+@media screen and (max-width: 991px) {
+  /* Restaurer le bouton about-hero sur tablette */
+  .button-primary.about-hero {
+    display: inline-block !important;
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+  }
+  
+  /* Restaurer les paragraphes about sur tablette */
+  .paragraph.about-hero.wechange._555 {
+    display: block !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* Adapter les boutons au lieu de les cacher */
+  .button-primary {
+    width: 100%;
+    max-width: 100%;
+    display: block !important;
+    left: auto !important;
+    position: relative !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ===================================================================
+   3. FIXES POUR LES POSITIONS ABSOLUES
+   =================================================================== */
+
+/* Convertir les positions absolues en relatives sur mobile */
+@media screen and (max-width: 767px) {
+  .button-primary {
+    left: auto !important;
+    top: auto !important;
+    position: relative !important;
+  }
+  
+  .button-secondary {
+    left: auto !important;
+    top: auto !important;
+    position: relative !important;
+  }
+}
+
+/* ===================================================================
+   4. FIXES POUR LES GRIDS
+   =================================================================== */
+
+/* S'assurer que les grids passent en 1 colonne sur mobile */
+@media screen and (max-width: 767px) {
+  .w-layout-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .courses-categories-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .perks-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .values-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .blog-section-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Tablette : 2 colonnes pour certains grids */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .courses-categories-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ===================================================================
+   5. FIXES POUR LES IMAGES QUI DÉBORDENT
+   =================================================================== */
+
+/* Limiter la largeur des images sur mobile */
+@media screen and (max-width: 767px) {
+  .vc-card-media img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  
+  .image-wrapper.home-about img {
+    width: 100% !important;
+    height: auto !important;
+  }
+  
+  .image.home-hero {
+    width: 100% !important;
+    height: auto !important;
+  }
+}
+
+/* ===================================================================
+   6. FIXES POUR LES CONTAINERS
+   =================================================================== */
+
+/* S'assurer que les containers ne débordent jamais */
+@media screen and (max-width: 991px) {
+  .container-default,
+  .w-container {
+    max-width: 100% !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .container-default,
+  .w-container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  
+  .container-default.shifting {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+/* ===================================================================
+   7. FIXES POUR LA NAVIGATION MOBILE
+   =================================================================== */
+
+/* S'assurer que le menu mobile fonctionne bien */
+@media screen and (max-width: 991px) {
+  .nav-menu {
+    width: 100% !important;
+  }
+  
+  .header-navigation {
+    width: 100% !important;
+  }
+  
+  .nav-link {
+    width: 100% !important;
+    text-align: left !important;
+  }
+}
+
+/* ===================================================================
+   8. FIXES POUR LES SECTIONS
+   =================================================================== */
+
+/* Réduire les paddings excessifs sur mobile */
+@media screen and (max-width: 767px) {
+  .section {
+    padding-top: clamp(40px, 8vw, 60px) !important;
+    padding-bottom: clamp(40px, 8vw, 60px) !important;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .section {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+  }
+}
+
+/* ===================================================================
+   9. FIXES POUR LES CARTES
+   =================================================================== */
+
+/* S'assurer que les cartes s'empilent correctement */
+@media screen and (max-width: 767px) {
+  .card.testimonial {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .vc-card-media {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .cta-wrapper {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .home-about-wrapper {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .home-hero-wrapper {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ===================================================================
+   10. FIXES POUR LES BOUTONS
+   =================================================================== */
+
+/* Adapter les groupes de boutons sur mobile */
+@media screen and (max-width: 767px) {
+  ._2-buttons {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  
+  ._2-buttons .button-primary,
+  ._2-buttons .button-secondary {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  
+  .button-2-buttons {
+    margin-right: 0 !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .button-2-buttons:last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+/* ===================================================================
+   11. FIXES POUR LE CTA WIDE
+   =================================================================== */
+
+/* Le bouton CTA wide doit s'adapter sur mobile */
+@media (max-width: 479px) {
+  .cta-wide {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+}
+
+/* ===================================================================
+   12. FIXES POUR LE VERTICAL CAROUSEL
+   =================================================================== */
+
+/* Adapter le carousel vertical sur mobile */
+@media (max-width: 767px) {
+  .vc-card {
+    width: 100% !important;
+  }
+  
+  .vc-card-media {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .vc-card-media img {
+    width: 100% !important;
+    height: 220px !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .vc-card {
+    width: min(1000px, 96vw) !important;
+  }
+  
+  .vc-card-media {
+    grid-template-columns: 360px 1fr !important;
+  }
+  
+  .vc-card-media img {
+    width: 440px !important;
+    height: 280px !important;
+  }
+}
+
+/* ===================================================================
+   13. FIXES POUR LES SLIDERS
+   =================================================================== */
+
+/* Adapter les flèches du slider sur mobile */
+@media (max-width: 991px) {
+  .courses-category .w-slider-arrow-left {
+    left: -20px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+  
+  .courses-category .w-slider-arrow-right {
+    right: -20px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+}
+
+/* ===================================================================
+   14. FIXES POUR LE FOOTER
+   =================================================================== */
+
+/* Adapter le footer sur mobile */
+@media screen and (max-width: 767px) {
+  .footer-content {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .footer-nav-main-wrapper {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .footer-content-bottom {
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+}
+
+/* ===================================================================
+   15. FIXES POUR LA TYPOGRAPHIE
+   =================================================================== */
+
+/* S'assurer que les titres ne débordent pas sur mobile */
+@media screen and (max-width: 479px) {
+  h1, .title.home-hero, .title.about-hero {
+    font-size: clamp(28px, 8vw, 35px) !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+  
+  h2, .title {
+    font-size: clamp(22px, 6vw, 26px) !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+  
+  h3 {
+    font-size: clamp(18px, 4vw, 20px) !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+}
+
+/* ===================================================================
+   16. FIXES POUR LES ÉLÉMENTS AVEC WIDTH FIXE
+   =================================================================== */
+
+/* Empêcher les débordements d'éléments avec width fixe */
+@media screen and (max-width: 767px) {
+  [style*="width"] {
+    max-width: 100% !important;
+  }
+}
+
+/* ===================================================================
+   17. AMÉLIORER L'ESPACEMENT DES CARTES DE SERVICE
+   =================================================================== */
+
+/* S'assurer que les cartes de service ont le bon espacement */
+.courses-categories-grid {
+  gap: clamp(16px, 3vw, 24px);
+}
+
+.card.courses-category {
+  width: 100%;
+  height: 100%;
+}
+
+/* ===================================================================
+   18. FIXES POUR LES IMAGES DE CARTES
+   =================================================================== */
+
+/* Garder l'aspect des images de cartes */
+.image-wrapper.card-courses-category {
+  height: 280px !important;
+  overflow: hidden !important;
+  border-radius: 16px !important;
+}
+
+.image.card-courses-category {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+
+@media screen and (max-width: 767px) {
+  .image-wrapper.card-courses-category {
+    height: 220px !important;
+  }
+}
+
+/* ===================================================================
+   19. FIXES POUR LES ESPACEMENTS DU HERO
+   =================================================================== */
+
+/* Améliorer l'espacement du hero sur mobile */
+@media screen and (max-width: 767px) {
+  .home-hero-wrapper {
+    gap: clamp(24px, 5vw, 40px) !important;
+  }
+  
+  .split-content.home-hero-content {
+    text-align: center !important;
+  }
+  
+  ._2-buttons._2buttons-edit {
+    justify-content: center !important;
+  }
+}
+
+/* ===================================================================
+   20. ASSURER LA VISIBILITÉ DE TOUS LES CONTENUS
+   =================================================================== */
+
+/* Forcer l'affichage de tous les éléments critiques */
+.paragraph.about-hero {
+  display: block !important;
+}
+
+.card-courses-category-content {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.title.card-courses-category,
+.paragraph.card-courses-category {
+  display: block !important;
+}
+
+/* ===================================================================
+   FIN DES FIXES RESPONSIVE
+   =================================================================== */
+
