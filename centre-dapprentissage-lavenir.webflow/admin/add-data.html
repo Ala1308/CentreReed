@@ -26,9 +26,35 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
     h1 {
       color: #333;
-      margin-bottom: 30px;
+      margin: 0;
+    }
+
+    .home-btn {
+      background: #0f437f;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.3s;
+    }
+
+    .home-btn:hover {
+      background: #184eac;
     }
 
     .tabs {
@@ -208,7 +234,13 @@
 </head>
 <body>
   <div class="container">
-    <h1>📝 Admin - Ajouter des données</h1>
+    <div class="header">
+      <h1>📝 Admin - Ajouter des données</h1>
+      <a href="../index.html" class="home-btn">
+        <span>🏠</span>
+        <span>Retour à l'accueil</span>
+      </a>
+    </div>
 
     <div class="tabs">
       <button class="tab active" onclick="switchTab('banner')">Message Bannière</button>
@@ -252,8 +284,8 @@
 
         <div class="form-group">
           <label>Image (URL)</label>
-          <input type="url" name="image" placeholder="https://example.com/image.jpg">
-          <div class="helper-text">URL de l'image qui apparaîtra dans le popup</div>
+          <input type="url" name="image" placeholder="https://i.ibb.co/xxxxx/image.jpg">
+          <div class="helper-text">💡 Téléversez sur <a href="https://imgbb.com/" target="_blank" style="color: #0f437f; font-weight: 600;">ImgBB.com</a> (gratuit) et collez l'URL "Direct link" ici</div>
         </div>
 
         <div class="form-group">
@@ -324,13 +356,21 @@
             <option value="Conseils">Conseils</option>
             <option value="Nouvelles">Nouvelles</option>
             <option value="Tutoriels">Tutoriels</option>
-            <option value="Événements">Événements</option>
+            <option value="Examens">Examens</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label>Image de couverture (URL)</label>
-          <input type="url" name="featuredImage" placeholder="https://example.com/image.jpg">
+          <label>Image de couverture</label>
+          <div style="background: #f0f8ff; padding: 12px; border-radius: 6px; border: 1px solid #0f437f;">
+            <p style="margin: 0; color: #0f437f; font-size: 14px;">
+              ✅ L'image sera automatiquement choisie selon la catégorie:<br>
+              • <strong>Conseils</strong> → Conseils.png<br>
+              • <strong>Nouvelles</strong> → Nouvelles.png<br>
+              • <strong>Tutoriels</strong> → Tutoriels.png<br>
+              • <strong>Examens</strong> → Examens.png
+            </p>
+          </div>
         </div>
 
         <div class="form-group">
@@ -388,7 +428,8 @@
 
         <div class="form-group">
           <label>Image miniature (URL)</label>
-          <input type="url" name="thumbnailUrl" placeholder="https://example.com/thumbnail.jpg">
+          <input type="url" name="thumbnailUrl" placeholder="https://i.ibb.co/xxxxx/thumbnail.jpg">
+          <div class="helper-text">💡 Téléversez sur <a href="https://imgbb.com/" target="_blank" style="color: #0f437f; font-weight: 600;">ImgBB.com</a> (gratuit) et collez l'URL "Direct link" ici</div>
         </div>
 
         <div class="form-group">
@@ -553,7 +594,7 @@
           content: form.content.value,
           author: form.author.value,
           category: form.category.value,
-          featuredImage: form.featuredImage.value || '',
+          // featuredImage is determined automatically based on category
           published: form.published.checked,
           publishDate: firebase.firestore.Timestamp.fromDate(new Date(form.publishDate.value)),
           createdAt: firebase.firestore.Timestamp.now(),

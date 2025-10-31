@@ -1,0 +1,101 @@
+# Centre Reed - SEO & Clean URLs Configuration
+# =============================================
+
+# Enable Rewrite Engine
+RewriteEngine On
+RewriteBase /
+
+# =============================================
+# 1. HTTPS & WWW Redirect (Force HTTPS)
+# =============================================
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# =============================================
+# 2. Remove .html Extension (Clean URLs)
+# =============================================
+
+# Redirect .html to clean URL (301 - SEO friendly)
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.html [NC]
+RewriteRule ^ %1 [R=301,L]
+
+# Route clean URLs to .html files
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L,QSA]
+
+# =============================================
+# 3. Special Rules for Homepage
+# =============================================
+
+# Redirect index.html to root
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+index\.html [NC]
+RewriteRule ^index\.html$ / [R=301,L]
+
+# =============================================
+# 4. Trailing Slash Management
+# =============================================
+
+# Remove trailing slashes (except for root)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} (.+)/$
+RewriteRule ^ %1 [R=301,L]
+
+# =============================================
+# 5. Security Headers
+# =============================================
+
+# Prevent directory browsing
+Options -Indexes
+
+# Protect sensitive files
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# =============================================
+# 6. Browser Caching (Performance)
+# =============================================
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Images
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    
+    # CSS & JavaScript
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    
+    # Fonts
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/ttf "access plus 1 year"
+    
+    # HTML (short cache)
+    ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# =============================================
+# 7. GZIP Compression (Performance)
+# =============================================
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+    AddOutputFilterByType DEFLATE application/javascript application/json
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# =============================================
+# 8. Custom Error Pages
+# =============================================
+
+ErrorDocument 404 /404.html
+ErrorDocument 401 /401.html
+

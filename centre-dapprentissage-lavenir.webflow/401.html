@@ -1,5 +1,5 @@
 <!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Sat Sep 20 2025 23:55:37 GMT+0000 (Coordinated Universal Time)  -->
-<html data-wf-page="673c0bf9babda2cdfd52d5db" data-wf-site="673c0bf8babda2cdfd52d57b" lang="en">
+<html data-wf-page="673c0bf9babda2cdfd52d5db" data-wf-site="673c0bf8babda2cdfd52d57b" lang="fr-CA">
 <head>
   <meta charset="utf-8">
   <title>Protected Page - Educationic X - Webflow Ecommerce website template</title>
@@ -80,22 +80,47 @@
   </div>
   <section class="utility-page-wrap">
     <div data-w-id="5e86ada79942c1e4247fd4c700000000000b" style="-webkit-transform:translate3d(0, 60px, 0) scale3d(0.95, 0.95, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 60px, 0) scale3d(0.95, 0.95, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 60px, 0) scale3d(0.95, 0.95, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 60px, 0) scale3d(0.95, 0.95, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="utility-page-content-password w-password-page w-form">
-      <form action="/.wf_auth" method="post" id="email-form" name="email-form" data-name="Email Form" class="utility-page-form w-password-page" data-wf-page-id="673c0bf9babda2cdfd52d5db" data-wf-element-id="5e86ada79942c1e4247fd4c700000000000c">
+      <form id="admin-login-form" class="utility-page-form w-password-page" onsubmit="return handleAdminLogin(event);">
         <div class="icon-password"><img src="images/password-icon-education-x-webflow-template.svg" alt="Password Icon - Education X Webflow Template" class="password-icon"></div>
-        <h2>Protected Page</h2>
-        <p class="paragraph password">This page is password protected. If you are the website admin, or have access to this page, please type your password below.</p><input class="input password w-password-page w-input" autofocus="true" maxlength="256" name="pass" data-name="field" placeholder="Enter your password" type="password" id="field"><input type="submit" data-wait="Please wait..." class="button-primary full-width w-password-page w-button" value="Enter now">
-        <div class="error-message w-password-page w-form-fail">
+        <h2>Admin Access</h2>
+        <p class="paragraph password">This page is password protected. Please enter the admin password to continue.</p>
+        <input class="input password w-password-page w-input" autofocus="true" maxlength="256" name="pass" data-name="field" placeholder="Enter admin password" type="password" id="admin-password-field">
+        <input type="submit" data-wait="Please wait..." class="button-primary full-width w-password-page w-button" value="Enter Admin Panel">
+        <div id="error-message" class="error-message w-password-page w-form-fail" style="display:none;">
           <div>Incorrect password. Please try again.</div>
         </div>
-        <div style="display:none" class="w-password-page w-embed w-script"><input type="hidden" name="path" value="<%WF_FORM_VALUE_PATH%>"><input type="hidden" name="page" value="<%WF_FORM_VALUE_PAGE%>"></div>
-        <div style="display:none" class="w-password-page w-embed w-script">
-          <script type="application/javascript">(function _handlePasswordPageOnload() {
-	  if (/[?&]e=1(&|$)/.test(document.location.search)) {
-	    document.querySelector('.w-password-page.w-form-fail').style.display = 'block';
-	  }
-	})()</script>
-        </div>
       </form>
+      
+      <script>
+        function handleAdminLogin(event) {
+          event.preventDefault();
+          
+          const passwordField = document.getElementById('admin-password-field');
+          const errorMessage = document.getElementById('error-message');
+          const password = passwordField.value;
+          
+          // Hardcoded admin password
+          const ADMIN_PASSWORD = 'Admin123!';
+          
+          if (password === ADMIN_PASSWORD) {
+            // Success - redirect to admin panel
+            window.location.href = 'admin/add-data.html';
+            return false;
+          } else {
+            // Show error message
+            errorMessage.style.display = 'block';
+            passwordField.value = '';
+            passwordField.focus();
+            
+            // Hide error message after 3 seconds
+            setTimeout(function() {
+              errorMessage.style.display = 'none';
+            }, 3000);
+            
+            return false;
+          }
+        }
+      </script>
     </div>
   </section>
   <footer class="footer">
@@ -113,7 +138,7 @@
             </div>
           </div>
           <div class="footer-newsletter-form-block w-form">
-            <form id="wf-form-Footer-Newsletter-Form" name="wf-form-Footer-Newsletter-Form" data-name="Footer Newsletter Form" redirect="/contact" data-redirect="/contact" method="get" class="footer-newsletter-form" data-wf-page-id="673c0bf9babda2cdfd52d5db" data-wf-element-id="80f67d97-1518-5356-1aea-33ba9e4a0483"><input type="submit" data-wait="Please wait..." class="button-primary footer-newsletter p11 w-button" value="Contactez-nous!"></form>
+            <form id="wf-form-Footer-Newsletter-Form" name="wf-form-Footer-Newsletter-Form" data-name="Footer Newsletter Form" action="contact.html" method="get" class="footer-newsletter-form" data-wf-page-id="673c0bf9babda2cdfd52d5db" data-wf-element-id="80f67d97-1518-5356-1aea-33ba9e4a0483"><input type="submit" data-wait="Please wait..." class="button-primary footer-newsletter p11 w-button" value="Contactez-nous!"></form>
             <div class="success-message w-form-done">
               <div>Thanks for joining our newsletter.</div>
             </div>

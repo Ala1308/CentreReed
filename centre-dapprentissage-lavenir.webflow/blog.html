@@ -1,19 +1,24 @@
 <!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Sat Sep 20 2025 23:55:37 GMT+0000 (Coordinated Universal Time)  -->
-<html data-wf-page="673c0bf9babda2cdfd52d5de" data-wf-site="673c0bf8babda2cdfd52d57b" lang="en">
+<html data-wf-page="673c0bf9babda2cdfd52d5de" data-wf-site="673c0bf8babda2cdfd52d57b" lang="fr-CA">
 <head>
   <meta charset="utf-8">
-  <title>Blogue-CA Avenir</title>
-  <meta content="Centre d&#x27;apprentissage l&#x27;Avenir, la référence numéro 1 au Québec depuis plus de 13 ans en tutorats et accompagnement scolaire pour enfants et adolescents." name="description">
-  <meta content="Blogue-CA Avenir" property="og:title">
-  <meta content="Centre d&#x27;apprentissage l&#x27;Avenir, la référence numéro 1 au Québec depuis plus de 13 ans en tutorats et accompagnement scolaire pour enfants et adolescents." property="og:description">
-  <meta content="https://uploads-ssl.webflow.com/607de2d8e8911e32707a3efe/626a1410d7204f3ed297dbdd_open-graph-educationic-x-webflow-template.png" property="og:image">
-  <meta content="Blogue-CA Avenir" property="twitter:title">
-  <meta content="Centre d&#x27;apprentissage l&#x27;Avenir, la référence numéro 1 au Québec depuis plus de 13 ans en tutorats et accompagnement scolaire pour enfants et adolescents." property="twitter:description">
-  <meta content="https://uploads-ssl.webflow.com/607de2d8e8911e32707a3efe/626a1410d7204f3ed297dbdd_open-graph-educationic-x-webflow-template.png" property="twitter:image">
+  <title>Blogue | Centre Reed - Conseils Éducation & Réussite Scolaire</title>
+  <meta content="Découvrez nos articles sur l'éducation, le tutorat et la réussite scolaire. Conseils d'experts pour parents et élèves au Québec." name="description">
+  <meta name="keywords" content="blogue éducation, conseils scolaires, réussite scolaire, tutorat québec, articles éducatifs">
+  <meta content="Blogue | Centre Reed" property="og:title">
+  <meta content="Découvrez nos articles sur l'éducation, le tutorat et la réussite scolaire. Conseils d'experts pour parents et élèves au Québec." property="og:description">
+  <meta content="https://cdn.prod.website-files.com/673c0bf8babda2cdfd52d57b/674384f37a771c9c20a14504_cheerful-multiracial-elementary-schoolgirls-with-m-2023-11-27-04-49-27-utc_Nero%20AI_Compress_High.jpg" property="og:image">
+  <meta property="og:url" content="https://centrereed.com/blog">
+  <meta property="og:site_name" content="Centre Reed">
+  <meta property="og:locale" content="fr_CA">
   <meta property="og:type" content="website">
+  <meta content="Blogue | Centre Reed" property="twitter:title">
+  <meta content="Découvrez nos articles sur l'éducation, le tutorat et la réussite scolaire. Conseils d'experts pour parents et élèves au Québec." property="twitter:description">
+  <meta content="https://cdn.prod.website-files.com/673c0bf8babda2cdfd52d57b/674384f37a771c9c20a14504_cheerful-multiracial-elementary-schoolgirls-with-m-2023-11-27-04-49-27-utc_Nero%20AI_Compress_High.jpg" property="twitter:image">
   <meta content="summary_large_image" name="twitter:card">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
+  <link rel="canonical" href="https://centrereed.com/blog">
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
   <link href="css/webflow.css" rel="stylesheet" type="text/css">
   <link href="css/centre-dapprentissage-lavenir.webflow.css?v=20251008N" rel="stylesheet" type="text/css">
@@ -143,16 +148,10 @@
         <div data-w-id="06103a75-3af4-5d9f-e6f5-9424791ba99a" style="opacity:0" class="top-content blog">
           <h2 class="title blog">Derniers articles</h2>
           <div class="category-wrapper">
-            <div class="w-dyn-list">
-              <div role="list" class="category-content w-dyn-items">
-                <div role="listitem" class="category-item w-dyn-item">
-                  <a href="blog.html" aria-current="page" class="button-category all w-inline-block w--current">
-                    <div class="button-category-text">All</div>
-                  </a>
-                </div>
-              </div>
+            <!-- Category Filter (Firebase) -->
+            <div id="category-filter-container" class="w-dyn-list">
               <div class="empty-state small neutral-100 w-dyn-empty">
-                <div>No items found.</div>
+                <div>Chargement...</div>
               </div>
             </div>
           </div>
@@ -180,7 +179,7 @@
               </div>
             </div>
             <div class="footer-newsletter-form-block w-form">
-              <form id="wf-form-Footer-Newsletter-Form" name="wf-form-Footer-Newsletter-Form" data-name="Footer Newsletter Form" redirect="/contact" data-redirect="/contact" method="get" class="footer-newsletter-form" data-wf-page-id="673c0bf9babda2cdfd52d5de" data-wf-element-id="80f67d97-1518-5356-1aea-33ba9e4a0483"><input type="submit" data-wait="Please wait..." class="button-primary footer-newsletter p11 w-button" value="Contactez-nous!"></form>
+              <form id="wf-form-Footer-Newsletter-Form" name="wf-form-Footer-Newsletter-Form" data-name="Footer Newsletter Form" action="contact.html" method="get" class="footer-newsletter-form" data-wf-page-id="673c0bf9babda2cdfd52d5de" data-wf-element-id="80f67d97-1518-5356-1aea-33ba9e4a0483"><input type="submit" data-wait="Please wait..." class="button-primary footer-newsletter p11 w-button" value="Contactez-nous!"></form>
               <div class="success-message w-form-done">
                 <div>Thanks for joining our newsletter.</div>
               </div>
@@ -208,6 +207,9 @@
                   </li>
                   <li class="footer-nav-item-copy">
                     <a href="blog.html" aria-current="page" class="footer-nav-link-copy w--current">Blogue</a>
+                  </li>
+                  <li class="footer-nav-item-copy">
+                    <a href="401.html" class="footer-nav-link-copy">Admin</a>
                   </li>
                 </ul>
               </div>
@@ -305,102 +307,177 @@
     
     document.addEventListener('DOMContentLoaded', loadFirebaseBanner);
     
-    // Load blog articles from Firebase
-    async function loadBlogArticles() {
-      try {
-        const articles = await getBlogArticles(20); // Get up to 20 articles
+    // Global variable to store all articles
+    let allArticles = [];
+    let currentCategory = 'all';
+    
+    // Load category filter
+    function loadCategoryFilter() {
+      const categories = ['all'];
+      
+      // Extract unique categories from articles
+      allArticles.forEach(article => {
+        if (article.category && !categories.includes(article.category)) {
+          categories.push(article.category);
+        }
+      });
+      
+      const container = document.getElementById('category-filter-container');
+      let html = '<div role="list" class="category-content w-dyn-items">';
+      
+      categories.forEach(category => {
+        const isActive = category === currentCategory;
+        const categoryLabel = category === 'all' ? 'Tous' : category;
         
-        console.log('Blog articles loaded:', articles); // Debug
+        html += `
+          <div role="listitem" class="category-item w-dyn-item">
+            <a href="#" onclick="filterByCategory('${category}'); return false;" 
+               class="button-category ${category === 'all' ? 'all' : ''} w-inline-block ${isActive ? 'w--current' : ''}">
+              <div class="button-category-text">${categoryLabel}</div>
+            </a>
+          </div>
+        `;
+      });
+      
+      html += '</div>';
+      container.innerHTML = html;
+    }
+    
+    // Filter articles by category
+    window.filterByCategory = function(category) {
+      currentCategory = category;
+      
+      // Update active state on buttons
+      const buttons = document.querySelectorAll('.button-category');
+      buttons.forEach(btn => btn.classList.remove('w--current'));
+      
+      // Add active class to clicked button
+      const clickedButton = document.querySelector(`.button-category[onclick*="${category}"]`);
+      if (clickedButton) clickedButton.classList.add('w--current');
+      
+      // Filter articles
+      const filteredArticles = category === 'all' 
+        ? allArticles 
+        : allArticles.filter(article => article.category === category);
+      
+      // Display filtered articles
+      displayFeaturedAndSidebar(filteredArticles);
+      displayArticlesGrid(filteredArticles);
+    }
+    
+    // Display featured and sidebar articles
+    function displayFeaturedAndSidebar(articles) {
+      const featuredContainer = document.getElementById('blog-featured-container');
+      const sidebarContainer = document.getElementById('blog-sidebar-container');
+      
+      if (articles.length > 0) {
+        // Featured article
+        const featured = articles[0];
+        const featuredDate = featured.publishDate?.toDate ? 
+          featured.publishDate.toDate().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
+        const featuredImage = getCategoryImage(featured.category);
         
-        if (articles.length > 0) {
-          // Featured article (first one)
-          const featured = articles[0];
-          const featuredContainer = document.getElementById('blog-featured-container');
-          const featuredDate = featured.publishDate?.toDate ? 
-            featured.publishDate.toDate().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
-          const featuredImage = featured.featuredImage && featured.featuredImage.trim() !== '' 
-            ? featured.featuredImage 
-            : 'https://via.placeholder.com/600x400/0f437f/ffffff?text=Article';
-          
-          featuredContainer.innerHTML = `
-            <div role="list" class="w-dyn-items">
-              <div role="listitem" class="post-featured-first-item w-dyn-item">
-                <a href="detail_blog.html?slug=${featured.slug}" class="card post-featured-first w-inline-block">
-                  <div class="image-wrapper card-post-featured-first">
-                    <img src="${featuredImage}" alt="${featured.title}" class="image card-post-featured-first">
-                    <div class="card-post-featured-first-category-wrapper">
-                      <div>${featured.category}</div>
-                    </div>
+        featuredContainer.innerHTML = `
+          <div role="list" class="w-dyn-items">
+            <div role="listitem" class="post-featured-first-item w-dyn-item">
+              <a href="detail_blog.html?slug=${featured.slug}" class="card post-featured-first w-inline-block">
+                <div class="image-wrapper card-post-featured-first">
+                  <img src="${featuredImage}" alt="${featured.title}" class="image card-post-featured-first">
+                  <div class="card-post-featured-first-category-wrapper">
+                    <div>${featured.category}</div>
                   </div>
-                  <div class="card-post-featured-first-content">
-                    <div class="card-post-featured-first-date">${featuredDate}</div>
-                    <h2 class="title card-post-featured-first heading-size-h3">${featured.title}</h2>
-                  </div>
-                </a>
-              </div>
-            </div>
-          `;
-          
-          // Sidebar articles (next 2)
-          const sidebarArticles = articles.slice(1, 3);
-          const sidebarContainer = document.getElementById('blog-sidebar-container');
-          
-          if (sidebarArticles.length > 0) {
-            let sidebarHTML = '<div role="list" class="post-featured-sidebar-grid w-dyn-items">';
-            sidebarArticles.forEach(article => {
-              const sidebarImage = article.featuredImage && article.featuredImage.trim() !== '' 
-                ? article.featuredImage 
-                : 'https://via.placeholder.com/400x300/0f437f/ffffff?text=Article';
-              
-              sidebarHTML += `
-                <div role="listitem" class="post-featured-item w-dyn-item">
-                  <a href="detail_blog.html?slug=${article.slug}" class="card post-featured w-inline-block">
-                    <div class="image-wrapper card-post-featured">
-                      <img src="${sidebarImage}" alt="${article.title}" class="image card-post-featured">
-                    </div>
-                    <div class="card-post-featured-content">
-                      <h3 class="title card-post-featured heading-size-h4">${article.title}</h3>
-                    </div>
-                  </a>
                 </div>
-              `;
-            });
-            sidebarHTML += '</div>';
-            sidebarContainer.innerHTML = sidebarHTML;
-          }
-          
-          // All articles grid (all articles)
-          const gridContainer = document.getElementById('blog-grid-container');
-          let gridHTML = '<div role="list" class="blog-grid w-dyn-items">';
-          
-          articles.forEach(article => {
-            const gridDate = article.publishDate?.toDate ? 
-              article.publishDate.toDate().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
-            const gridImage = article.featuredImage && article.featuredImage.trim() !== '' 
-              ? article.featuredImage 
-              : 'https://via.placeholder.com/400x300/0f437f/ffffff?text=Article';
+                <div class="card-post-featured-first-content">
+                  <div class="card-post-featured-first-date">${featuredDate}</div>
+                  <h2 class="title card-post-featured-first heading-size-h3">${featured.title}</h2>
+                </div>
+              </a>
+            </div>
+          </div>
+        `;
+        
+        // Sidebar articles
+        const sidebarArticles = articles.slice(1, 3);
+        if (sidebarArticles.length > 0) {
+          let sidebarHTML = '<div role="list" class="post-featured-sidebar-grid w-dyn-items">';
+          sidebarArticles.forEach(article => {
+            const sidebarImage = getCategoryImage(article.category);
             
-            gridHTML += `
-              <div data-w-id="4da45686-e6cf-a4f6-470d-171e76b24ac8" style="opacity:1" role="listitem" class="post-item w-dyn-item">
-                <a href="detail_blog.html?slug=${article.slug}" class="card post w-inline-block">
-                  <div class="image-wrapper card-post">
-                    <img src="${gridImage}" alt="${article.title}" class="image card-post">
-                    <div class="card-post-category-wrapper">
-                      <div>${article.category}</div>
-                    </div>
+            sidebarHTML += `
+              <div role="listitem" class="post-featured-item w-dyn-item">
+                <a href="detail_blog.html?slug=${article.slug}" class="card post-featured w-inline-block">
+                  <div class="image-wrapper card-post-featured">
+                    <img src="${sidebarImage}" alt="${article.title}" class="image card-post-featured">
                   </div>
-                  <div class="card-post-content">
-                    <div class="card-post-date">${gridDate}</div>
-                    <h3 class="title card-post">${article.title}</h3>
+                  <div class="card-post-featured-content">
+                    <h3 class="title card-post-featured heading-size-h4">${article.title}</h3>
                   </div>
                 </a>
               </div>
             `;
           });
+          sidebarHTML += '</div>';
+          sidebarContainer.innerHTML = sidebarHTML;
+        } else {
+          sidebarContainer.innerHTML = '';
+        }
+      } else {
+        featuredContainer.innerHTML = '<div class="empty-state w-dyn-empty"><div>Aucun article disponible.</div></div>';
+        sidebarContainer.innerHTML = '';
+      }
+    }
+    
+    // Display articles grid
+    function displayArticlesGrid(articles) {
+      const gridContainer = document.getElementById('blog-grid-container');
+      
+      if (articles.length > 0) {
+        let gridHTML = '<div role="list" class="blog-grid w-dyn-items">';
+        
+        articles.forEach(article => {
+          const gridDate = article.publishDate?.toDate ? 
+            article.publishDate.toDate().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
+          const gridImage = getCategoryImage(article.category);
           
-          gridHTML += '</div>';
-          gridContainer.innerHTML = gridHTML;
+          gridHTML += `
+            <div data-w-id="4da45686-e6cf-a4f6-470d-171e76b24ac8" style="opacity:1" role="listitem" class="post-item w-dyn-item">
+              <a href="detail_blog.html?slug=${article.slug}" class="card post w-inline-block">
+                <div class="image-wrapper card-post">
+                  <img src="${gridImage}" alt="${article.title}" class="image card-post">
+                  <div class="card-post-category-wrapper">
+                    <div>${article.category}</div>
+                  </div>
+                </div>
+                <div class="card-post-content">
+                  <div class="card-post-date">${gridDate}</div>
+                  <h3 class="title card-post">${article.title}</h3>
+                </div>
+              </a>
+            </div>
+          `;
+        });
+        
+        gridHTML += '</div>';
+        gridContainer.innerHTML = gridHTML;
+      } else {
+        gridContainer.innerHTML = '<div class="empty-state w-dyn-empty"><div>Aucun article dans cette catégorie.</div></div>';
+      }
+    }
+    
+    // Load blog articles from Firebase
+    async function loadBlogArticles() {
+      try {
+        allArticles = await getBlogArticles(20); // Get up to 20 articles
+        
+        console.log('Blog articles loaded:', allArticles); // Debug
+        
+        if (allArticles.length > 0) {
+          // Load category filter
+          loadCategoryFilter();
           
+          // Display articles
+          displayFeaturedAndSidebar(allArticles);
+          displayArticlesGrid(allArticles);
         } else {
           // No articles found
           document.getElementById('blog-featured-container').innerHTML = '<div class="empty-state w-dyn-empty"><div>Aucun article disponible.</div></div>';
