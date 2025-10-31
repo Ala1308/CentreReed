@@ -19,6 +19,17 @@
       ],
       "destination": "https://centrereed.com/:path*",
       "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.centrereed.com"
+        }
+      ],
+      "destination": "https://centrereed.com/:path*",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -31,6 +42,10 @@
     {
       "source": "/(.*)",
       "headers": [
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains; preload"
+        },
         {
           "key": "X-Content-Type-Options",
           "value": "nosniff"
