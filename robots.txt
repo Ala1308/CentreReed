@@ -11,7 +11,7 @@ Disallow: /401.html
 
 
 # Sitemap location
-Sitemap: https://www.centrereed.com/sitemap.xml
+Sitemap: https://centrereed.com/sitemap.xml
 
 # AI/LLM specific crawlers
 User-agent: GPTBot

@@ -1,0 +1,668 @@
+/* ===================================================================
+   MOBILE CRITICAL FIXES - Centre Reed
+   
+   Ce fichier corrige les problèmes CRITIQUES identifiés dans le
+   diagnostic mobile vs desktop.
+   
+   À charger EN DERNIER, après tous les autres CSS :
+   <link href="css/mobile-critical-fixes.css" rel="stylesheet">
+   
+   Date: 2025-11-03
+   =================================================================== */
+
+/* ===================================================================
+   1. PRÉVENTION DÉBORDEMENTS HORIZONTAUX
+   =================================================================== */
+
+/* Empêcher tout débordement horizontal */
+html, body {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+/* S'assurer que tous les éléments respectent la box-sizing */
+* {
+  box-sizing: border-box !important;
+}
+
+/* Forcer les images à respecter leur conteneur */
+img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* ===================================================================
+   2. CORRECTION POSITIONS ABSOLUES PROBLÉMATIQUES
+   =================================================================== */
+
+@media screen and (max-width: 991px) {
+  /* Tablette : Corriger les positions extrêmes */
+  .paragraph.about-hero {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100% !important;
+    padding: 0 1rem !important;
+  }
+  
+  .button-primary {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+  }
+  
+  .button-primary.about-hero {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* Mobile : Forcer toutes les positions problématiques en relative */
+  .button-primary,
+  .button-secondary,
+  .paragraph.about-hero,
+  .title.about-hero,
+  .image.mission._1 {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    margin-left: 0 !important;
+  }
+  
+  /* S'assurer que les boutons ne débordent pas */
+  .button-primary {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+/* ===================================================================
+   3. CORRECTION LARGEURS FIXES
+   =================================================================== */
+
+@media screen and (max-width: 991px) {
+  /* Forcer les éléments avec width fixe à respecter le viewport */
+  [style*="width"] {
+    max-width: 100% !important;
+  }
+  
+  /* Conteneurs */
+  .container-default,
+  .w-container {
+    max-width: 100% !important;
+    padding-left: clamp(16px, 4vw, 24px) !important;
+    padding-right: clamp(16px, 4vw, 24px) !important;
+  }
+}
+
+/* ===================================================================
+   4. CORRECTION IMAGES CAROUSEL/CARDS
+   =================================================================== */
+
+@media screen and (max-width: 767px) {
+  /* Images du carousel vertical */
+  .vc-card-media img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 200px !important;
+    object-fit: cover !important;
+  }
+  
+  /* Images des cartes de services */
+  .image-wrapper.card-courses-category {
+    height: auto !important;
+    min-height: 200px !important;
+  }
+  
+  .image.card-courses-category {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 200px !important;
+    object-fit: cover !important;
+  }
+  
+  /* Images Hero */
+  .image.home-hero,
+  .image-wrapper.home-about img {
+    width: 100% !important;
+    height: auto !important;
+  }
+}
+
+/* ===================================================================
+   5. CORRECTION GRILLES RESPONSIVE
+   =================================================================== */
+
+@media screen and (max-width: 767px) {
+  /* Forcer toutes les grilles en 1 colonne sur mobile */
+  .w-layout-grid,
+  .courses-categories-grid,
+  .perks-grid,
+  .values-grid,
+  .blog-section-grid,
+  .footer-content,
+  .footer-nav-main-wrapper {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Réduire les gaps pour mobile */
+  .w-layout-grid,
+  .courses-categories-grid,
+  .perks-grid,
+  .values-grid {
+    gap: clamp(16px, 3vw, 24px) !important;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  /* Tablette : 2 colonnes pour certains grids */
+  .courses-categories-grid,
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ===================================================================
+   6. CORRECTION NAVIGATION MOBILE
+   =================================================================== */
+
+@media screen and (max-width: 991px) {
+  /* S'assurer que le menu mobile fonctionne */
+  .nav-menu {
+    width: 100% !important;
+  }
+  
+  .header-navigation {
+    width: 100% !important;
+  }
+  
+  .nav-link {
+    width: 100% !important;
+    text-align: left !important;
+    padding: 12px 16px !important;
+  }
+  
+  /* Dropdown mobile */
+  .dropdown-menu {
+    position: static !important;
+    width: 100% !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    margin-top: 8px !important;
+  }
+}
+
+/* ===================================================================
+   7. CORRECTION BOUTONS EMPILÉS
+   =================================================================== */
+
+@media screen and (max-width: 767px) {
+  /* Forcer les groupes de boutons en colonne */
+  ._2-buttons,
+  ._2-buttons._2buttons-edit {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px !important;
+  }
+  
+  ._2-buttons .button-primary,
+  ._2-buttons .button-secondary,
+  ._2-buttons .hero-eq {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    left: auto !important;
+    top: auto !important;
+    position: relative !important;
+  }
+  
+  .button-2-buttons {
+    margin-right: 0 !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .button-2-buttons:last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+/* ===================================================================
+   8. CORRECTION ESPACEMENTS SECTIONS
+   =================================================================== */
+
+@media screen and (max-width: 767px) {
+  /* Harmoniser les paddings de section */
+  .section {
+    padding-top: clamp(40px, 8vw, 60px) !important;
+    padding-bottom: clamp(40px, 8vw, 60px) !important;
+  }
+  
+  /* Sections spéciales */
+  .section.home-hero,
+  .section.about-hero {
+    padding-top: clamp(60px, 10vw, 80px) !important;
+    padding-bottom: clamp(60px, 10vw, 80px) !important;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  /* Petit mobile : réduire légèrement */
+  .section {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+  }
+}
+
+/* ===================================================================
+   9. CORRECTION TYPOGRAPHIE
+   =================================================================== */
+
+@media screen and (max-width: 479px) {
+  /* Assurer que les titres ne débordent pas */
+  h1, 
+  .title.home-hero, 
+  .title.about-hero {
+    font-size: clamp(28px, 8vw, 42px) !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    hyphens: auto !important;
+  }
+  
+  h2, 
+  .title {
+    font-size: clamp(22px, 6vw, 32px) !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+  
+  h3 {
+    font-size: clamp(18px, 4vw, 24px) !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+  
+  /* Corriger l'incohérence du nav-link */
+  .nav-link {
+    font-size: 16px !important;  /* Au lieu de 30px */
+  }
+}
+
+/* ===================================================================
+   10. CORRECTION CARTES ET CONTENUS
+   =================================================================== */
+
+@media screen and (max-width: 767px) {
+  /* Cartes testimonials */
+  .card.testimonial {
+    text-align: center !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  /* Cartes CTA */
+  .cta-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  
+  /* Home about wrapper */
+  .home-about-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: clamp(24px, 5vw, 40px) !important;
+  }
+  
+  /* Hero wrapper */
+  .home-hero-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: clamp(24px, 5vw, 40px) !important;
+    text-align: center !important;
+  }
+}
+
+/* ===================================================================
+   11. CORRECTION FOOTER
+   =================================================================== */
+
+@media screen and (max-width: 767px) {
+  /* Footer en colonne simple */
+  .footer-content {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  
+  .footer-nav-main-wrapper {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .footer-content-bottom {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 20px !important;
+  }
+  
+  .footer-social-media-grid {
+    justify-content: center !important;
+  }
+}
+
+/* ===================================================================
+   12. CORRECTION CAROUSEL VERTICAL (MÉTHODOLOGIE)
+   =================================================================== */
+
+@media screen and (max-width: 767px) {
+  .vc-card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .vc-card-media {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  
+  .vc-card-media img {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 220px !important;
+    max-height: 300px !important;
+    object-fit: cover !important;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .vc-card {
+    width: min(90vw, 800px) !important;
+  }
+  
+  .vc-card-media {
+    grid-template-columns: 300px 1fr !important;
+  }
+}
+
+/* ===================================================================
+   13. CORRECTION SLIDERS
+   =================================================================== */
+
+@media screen and (max-width: 991px) {
+  /* Ajuster les flèches du slider sur mobile/tablette */
+  .courses-category .w-slider-arrow-left {
+    left: -20px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+  
+  .courses-category .w-slider-arrow-right {
+    right: -20px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* Sur petit mobile, réduire la taille des flèches */
+  .w-slider-arrow-left,
+  .w-slider-arrow-right {
+    width: 40px !important;
+    font-size: 24px !important;
+  }
+}
+
+/* ===================================================================
+   14. CORRECTION CTA WIDE (BOUTONS LARGES)
+   =================================================================== */
+
+@media screen and (max-width: 479px) {
+  .cta-wide,
+  .about-team-cta.button.w-button {
+    min-width: 0 !important;
+    width: 100% !important;
+    white-space: normal !important;  /* Permettre le wrap du texte */
+    padding: 14px 20px !important;
+  }
+}
+
+/* ===================================================================
+   15. CORRECTION PERKS/FEATURES
+   =================================================================== */
+
+@media screen and (max-width: 767px) {
+  /* Centrer les perks sur mobile */
+  .perk-wrapper {
+    text-align: center !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  .image.perk {
+    margin-right: 0 !important;
+    margin-bottom: 20px !important;
+  }
+}
+
+/* ===================================================================
+   16. CORRECTION FORMULAIRES DE CONTACT
+   =================================================================== */
+
+@media screen and (max-width: 767px) {
+  /* S'assurer que les inputs sont utilisables */
+  .input,
+  .text-area {
+    width: 100% !important;
+    font-size: 16px !important;  /* Éviter le zoom sur iOS */
+    padding: 12px 15px !important;
+  }
+  
+  .card.contact {
+    min-height: auto !important;  /* Laisser la hauteur s'adapter */
+    padding: 32px 25px !important;
+  }
+}
+
+/* ===================================================================
+   17. CORRECTION CENTRAGE HERO MOBILE
+   =================================================================== */
+
+@media screen and (max-width: 767px) {
+  /* Centrer le contenu hero sur mobile */
+  .split-content.home-hero-content {
+    text-align: center !important;
+    align-items: center !important;
+  }
+  
+  .paragraph.home-hero {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  ._2-buttons._2buttons-edit {
+    justify-content: center !important;
+    align-items: center !important;
+  }
+}
+
+/* ===================================================================
+   18. CORRECTION ABOUT PAGE
+   =================================================================== */
+
+@media screen and (max-width: 991px) {
+  /* Centrer la section "Qui sommes-nous" */
+  .section.about-hero.ghgh {
+    text-align: center !important;
+  }
+  
+  .about-hero-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  .split-content.about-hero-right {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+/* ===================================================================
+   19. AMÉLIORATION TOUCH TARGETS (ACCESSIBILITÉ MOBILE)
+   =================================================================== */
+
+@media screen and (max-width: 767px) {
+  /* S'assurer que tous les éléments cliquables sont assez grands */
+  .button-primary,
+  .button-secondary,
+  .nav-link,
+  .dropdown-menu a,
+  .footer-nav-link {
+    min-height: 44px !important;  /* Recommandation Apple/Google */
+    min-width: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  /* Augmenter l'espacement des liens pour éviter les erreurs de toucher */
+  .footer-nav-item {
+    margin-bottom: 8px !important;
+  }
+}
+
+/* ===================================================================
+   20. PERFORMANCE : DÉSACTIVER ANIMATIONS COMPLEXES SUR MOBILE
+   =================================================================== */
+
+@media screen and (max-width: 767px) {
+  /* Simplifier les animations sur mobile pour performance */
+  * {
+    animation-duration: 0.2s !important;
+    transition-duration: 0.2s !important;
+  }
+  
+  /* Désactiver les animations parallax */
+  .bg.home-hero-shape-1,
+  .bg.home-hero-shape-2,
+  .bg.cta-shape-1,
+  .bg.cta-shape-2,
+  .bg.cta-shape-3 {
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+/* ===================================================================
+   21. CORRECTION Z-INDEX CONFLICTS
+   =================================================================== */
+
+/* S'assurer que la navigation reste au-dessus */
+.header {
+  z-index: 100 !important;
+}
+
+.top-banner {
+  z-index: 120 !important;
+}
+
+/* Modal doit être au-dessus de tout */
+#banner-modal {
+  z-index: 10000 !important;
+}
+
+/* ===================================================================
+   22. CORRECTION ASPECT RATIOS IMAGES
+   =================================================================== */
+
+@media screen and (max-width: 767px) {
+  /* Maintenir des ratios d'aspect cohérents */
+  .image-wrapper.card-courses-category {
+    aspect-ratio: 4 / 3 !important;
+    height: auto !important;
+  }
+  
+  .image-wrapper.home-hero {
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+  }
+  
+  .image-wrapper.home-about {
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+  }
+}
+
+/* ===================================================================
+   23. CORRECTION OVERFLOW CACHÉS
+   =================================================================== */
+
+/* S'assurer que le contenu important n'est jamais caché */
+.paragraph.about-hero,
+.title.about-hero,
+.card-courses-category-content,
+.title.card-courses-category {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* ===================================================================
+   24. CORRECTION STICKY ELEMENTS MOBILE
+   =================================================================== */
+
+@media screen and (max-width: 991px) {
+  /* Ajuster le top banner pour mobile */
+  .top-banner {
+    position: sticky !important;
+    top: 0 !important;
+    font-size: 14px !important;
+    padding: 8px !important;
+    height: auto !important;
+    min-height: 40px !important;
+  }
+  
+  /* Ajuster le header pour mobile */
+  .header {
+    position: static !important;  /* Pas fixed sur mobile */
+  }
+  
+  body {
+    padding-top: 0 !important;  /* Pas de padding si header pas fixed */
+  }
+}
+
+/* ===================================================================
+   25. CORRECTION FINALE : RESET PROBLÈMES WEBFLOW
+   =================================================================== */
+
+@media screen and (max-width: 991px) {
+  /* Reset des classes Webflow qui causent problèmes */
+  .w-hidden-medium {
+    display: block !important;  /* Ne pas cacher sur tablette */
+  }
+  
+  .w-hidden-small {
+    display: block !important;  /* Ne pas cacher sur mobile */
+  }
+  
+  /* Sauf si explicitement voulu */
+  .intentionally-hidden-mobile {
+    display: none !important;
+  }
+}
+
+/* ===================================================================
+   FIN DES CORRECTIONS CRITIQUES
+   
+   Ces corrections devraient résoudre ~80% des problèmes mobile
+   sans casser le design desktop.
+   
+   Pour une solution à long terme, considérer une refactorisation
+   Mobile-First complète.
+   =================================================================== */
+
