@@ -46,10 +46,10 @@ Changed from `lang="en"` to `lang="fr-CA"` on ALL pages:
 | Page | Before | After |
 |------|--------|-------|
 | **Homepage** | "Accueil-Centre Reed" | "Centre Reed \| Tutorat Scolaire Québec - Aide aux Devoirs & Préparation Examens" |
-| **About** | "A propos-CA Avenir" | "À Propos \| Centre Reed - Notre Histoire & Notre Mission" |
-| **Contact** | "Contactez-nous CA Avenir" | "Contactez-nous \| Centre Reed - Demande de Tutorat au Québec" |
-| **Blog** | "Blogue-CA Avenir" | "Blogue \| Centre Reed - Conseils Éducation & Réussite Scolaire" |
-| **Services** | "Services-CA Avenir" | "Nos Services \| Centre Reed - Tutorat & Soutien Scolaire Personnalisé" |
+| **About** | "A propos-Centre Reed" | "À Propos \| Centre Reed - Notre Histoire & Notre Mission" |
+| **Contact** | "Contactez-nous Centre Reed" | "Contactez-nous \| Centre Reed - Demande de Tutorat au Québec" |
+| **Blog** | "Blogue-Centre Reed" | "Blogue \| Centre Reed - Conseils Éducation & Réussite Scolaire" |
+| **Services** | "Services-Centre Reed" | "Nos Services \| Centre Reed - Tutorat & Soutien Scolaire Personnalisé" |
 | **Ressources Élèves** | "Ressources pour élèves" | "Ressources pour Élèves \| Centre Reed - Outils & Guides Scolaires" |
 | **Ressources Parents** | "Ressources pour parents" | "Ressources pour Parents \| Centre Reed - Guides & Conseils Éducatifs" |
 | **Aide aux Devoirs** | "Aide aux devoirs" | "Aide aux Devoirs \| Centre Reed - Soutien Scolaire Personnalisé Québec" |

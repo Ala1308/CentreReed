@@ -191,7 +191,7 @@ Add this JSON-LD in the `<head>`:
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Centre Reed",
-  "alternateName": "Centre d'Apprentissage L'Avenir",
+  "alternateName": "Centre Reed",
   "image": "https://centrereed.vercel.app/images/logoreed-2.png",
   "url": "https://centrereed.vercel.app",
   "telephone": "+14389332853",
