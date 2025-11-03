@@ -3753,6 +3753,20 @@ strong {
     margin-top: auto;
     margin-left: -29px;
   }
+  
+  /* Fix centering for 'Qui sommes-nous' section on large screens */
+  .section.about-hero.ghgh .heading-3 {
+    min-width: auto !important;
+    max-width: 100% !important;
+    width: auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  .section.about-hero.ghgh .about-hero-wrapper {
+    position: static !important;
+    top: auto !important;
+  }
 }
 
 @media screen and (min-width: 1920px) {
@@ -3898,6 +3912,19 @@ strong {
     justify-content: center;
     align-items: center;
     height: 200px;
+  }
+  
+  /* Fix centering for 'Qui sommes-nous' section on very large screens */
+  .section.about-hero.ghgh .title.about-hero,
+  .section.about-hero.ghgh .heading-3 {
+    min-width: auto !important;
+    max-width: 100% !important;
+    width: auto !important;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    left: auto !important;
+    position: static !important;
   }
 }
 @media screen and (max-width: 991px) {
