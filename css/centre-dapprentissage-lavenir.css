@@ -26,7 +26,12 @@ html, body { max-width: 100%; overflow-x: hidden; }
 @media (max-width: 479px){ .cta-wide { min-width: 0; width: 100%; } }
 
 /* KPI auto-scrolling ticker */
-.kpi-ticker { overflow: hidden; position: relative; padding: 10px 0; }
+.kpi-ticker { 
+  overflow: hidden; 
+  position: relative; 
+  padding: 10px 0; 
+  margin-top: 60px;
+}
 .kpi-track { display: flex; gap: 16px; width: max-content; animation: kpi-scroll 25s linear infinite; }
 .kpi-card { display: inline-flex; align-items: center; gap: 12px; padding: 14px 22px; background: #f6f9ff; border-radius: 14px; box-shadow: 0 1px 0 rgba(24,78,172,.06), 0 0 0 1px rgba(24,78,172,.08); }
 .kpi-card .kpi-emoji { font-size: 22px; }
@@ -53,7 +58,11 @@ html, body { max-width: 100%; overflow-x: hidden; }
 #method .title.text-center { text-align: center; margin-left: auto; margin-right: auto; display: block; }
 
 /* Force center the methodology section and title */
-.section.hghg.f.fgf { text-align: center; width: 100%; }
+.section.hghg.f.fgf { 
+  text-align: center; 
+  width: 100%; 
+  padding-top: 120px !important;
+}
 .section.hghg.f.fgf .title.about-hero.edit.metho._11.text-center { width: 100%; text-align: center; margin: 0 auto; }
 /* Override legacy offsets that push the title to the right */
 .section.hghg.f.fgf .title.about-hero.edit.metho._11 { position: static; left: auto; top: auto; min-width: 0; max-width: none; width: auto; margin: 0 auto 40px; text-align: center; }
@@ -910,6 +919,7 @@ strong {
 
 .section.bg-neutral-700 {
   position: relative;
+  padding-top: 100px;
 }
 
 .section.bg-neutral-700.perks {
@@ -1252,6 +1262,7 @@ strong {
   color: var(--neutral-300);
   margin-bottom: 0;
   font-size: 22px;
+  text-align: left;
 }
 
 .paragraph.card-value, .paragraph.teachers {
@@ -1568,6 +1579,7 @@ strong {
 .title.values {
   color: var(--neutral-100);
   font-size: 50px;
+  margin-bottom: 48px;
 }
 
 .title.card-value {
@@ -1899,6 +1911,8 @@ strong {
   z-index: 1;
   position: absolute;
   top: -90%;
+  width: 60px;
+  max-width: 60px;
 }
 
 .image.bg-arrow.yellow.edit11 {
@@ -1908,8 +1922,11 @@ strong {
 }
 
 .image.bg-arrow.e1._454._565 {
-  top: 93%;
+  top: 100%;
   left: 50%;
+  width: 30px !important;
+  max-width: 30px !important;
+  transform: translateY(-50%);
 }
 
 .image.bg-arrow.edit1920 {
@@ -2744,7 +2761,8 @@ strong {
 
 .container-small-568px.values {
   text-align: center;
-  margin-bottom: 56px;
+  margin-bottom: 100px;
+  max-width: 850px;
 }
 
 .container-large-1024px {
@@ -3718,7 +3736,10 @@ strong {
 
   .image.bg-arrow.e1._454._565 {
     position: absolute;
-    top: 93%;
+    top: 100%;
+    width: 30px !important;
+    max-width: 30px !important;
+    transform: translateY(-50%);
   }
 
   .image.bg-arrow.edit1920 {
@@ -5293,7 +5314,10 @@ strong {
   }
 
   .image.bg-arrow.e1._454._565 {
-    top: 96%;
+    top: 100%;
+    width: 30px !important;
+    max-width: 30px !important;
+    transform: translateY(-50%);
   }
 
   .image.course-preview-button-icon {
@@ -6264,14 +6288,17 @@ strong {
   }
 
   .image.bg-arrow.yellow.val._909._555 {
-    width: 40px;
+    width: 60px;
+    max-width: 60px;
     top: -60px;
   }
 
   .image.bg-arrow.e1._454._565 {
-    width: 40px;
-    top: 98%;
+    width: 30px !important;
+    max-width: 30px !important;
+    top: 100%;
     left: 45%;
+    transform: translateY(-50%);
   }
 
   .image.mission._1 {
@@ -6864,7 +6891,18 @@ strong {
     font-size: 13px;
   }
 
-.section-4._88 { padding-left: 20px; padding-right: 20px; text-align: center; }
+.section-4._88 { 
+  padding-left: 20px; 
+  padding-right: 20px; 
+  padding-top: 200px !important;
+  padding-bottom: 200px !important;
+  text-align: center; 
+}
+
+/* Add spacing to title in 'Nos résultats' section */
+.section-4._88 .title.text-center {
+  margin-bottom: 0;
+}
 
 /* Override w-layout-blockcontainer display:block with flex */
 .section-4._88 .w-layout-blockcontainer.container._99 {
