@@ -100,16 +100,22 @@
     if(!container) return;
     var cards = Array.prototype.slice.call(container.querySelectorAll('.vc-card'));
     if(cards.length === 0) return;
+    var dots = Array.prototype.slice.call(container.querySelectorAll('.v-carousel-dot'));
     var idx = 0;
     function apply(){
       cards.forEach(function(c, i){ c.classList.toggle('is-active', i === idx); });
+      dots.forEach(function(d, i){ d.classList.toggle('is-active', i === idx); });
     }
+    function goTo(i){ idx = i; apply(); }
     function next(){ idx = (idx+1) % cards.length; apply(); }
     function prev(){ idx = (idx-1+cards.length) % cards.length; apply(); }
     var nextBtn = container.querySelector('.vc-next');
     var prevBtn = container.querySelector('.vc-prev');
     if(nextBtn) nextBtn.addEventListener('click', next);
     if(prevBtn) prevBtn.addEventListener('click', prev);
+    dots.forEach(function(dot, i){ 
+      dot.addEventListener('click', function(){ goTo(i); }); 
+    });
     apply();
     var auto = setInterval(next, 3000);
     container.addEventListener('mouseenter', function(){ clearInterval(auto); });

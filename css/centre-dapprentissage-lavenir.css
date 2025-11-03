@@ -65,7 +65,7 @@ html, body { max-width: 100%; overflow-x: hidden; }
 }
 .section.hghg.f.fgf .title.about-hero.edit.metho._11.text-center { width: 100%; text-align: center; margin: 0 auto; }
 /* Override legacy offsets that push the title to the right */
-.section.hghg.f.fgf .title.about-hero.edit.metho._11 { position: static; left: auto; top: auto; min-width: 0; max-width: none; width: auto; margin: 0 auto 40px; text-align: center; }
+.section.hghg.f.fgf .title.about-hero.edit.metho._11 { position: static; left: auto; top: auto; min-width: 0; max-width: none; width: auto; margin: 0 auto 120px; text-align: center; }
 
 /* Force center the 'Qui sommes-nous' section */
 .section.about-hero.ghgh { 
@@ -96,7 +96,7 @@ html, body { max-width: 100%; overflow-x: hidden; }
 }
 
 /* Vertical carousel */
-.v-carousel { position: relative; display: grid; grid-template-rows: auto 1fr auto; gap: 16px; align-items: center; justify-items: center; margin: 24px 0 40px; }
+.v-carousel { position: relative; display: grid; grid-template-rows: auto 1fr auto auto; gap: 16px; align-items: center; justify-items: center; margin: 120px 0 40px; }
 .vc-btn { background: #0f5ab7; color: #fff; border: none; border-radius: 999px; width: 42px; height: 42px; display: grid; place-items: center; cursor: pointer; box-shadow: 0 4px 10px rgba(15,67,127,.2); }
 .vc-btn:hover { transform: translateY(-1px); }
 .vc-card { width: min(1100px, 96vw); transition: opacity .6s ease, transform .6s ease; }
@@ -104,10 +104,39 @@ html, body { max-width: 100%; overflow-x: hidden; }
 .v-carousel .vc-card { display: none; }
 .v-carousel .vc-card.is-active { display: block; }
 
+/* Carousel bullet points */
+.v-carousel-dots { display: flex; gap: 12px; justify-content: center; margin-top: 16px; }
+.v-carousel-dot { width: 12px; height: 12px; border-radius: 50%; background: #c4d7f2; cursor: pointer; transition: all .3s ease; border: none; padding: 0; }
+.v-carousel-dot.is-active { background: #0f5ab7; transform: scale(1.2); }
+.v-carousel-dot:hover { background: #5689d1; }
+
 /* Carousel card media */
-.vc-card-media { display: grid; grid-template-columns: 260px 1fr; gap: 20px; align-items: center; }
+.vc-card-media { display: grid; grid-template-columns: 260px 1fr; gap: 20px; align-items: start; }
 .vc-card-media img { width: 360px; height: 220px; object-fit: cover; border-radius: 14px; box-shadow: 0 3px 8px rgba(15,67,127,.15); }
-.vc-card-media .vc-card-body { display: grid; gap: 8px; }
+.vc-card-media .vc-card-body { display: grid; gap: 12px; }
+.vc-card-body .title { 
+  text-align: center; 
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+.vc-card-body .paragraph { 
+  text-align: left; 
+  margin-bottom: 8px;
+}
+.vc-card-body .vc-list { 
+  list-style-type: disc; 
+  padding-left: 24px; 
+  margin: 0; 
+  text-align: left;
+  color: inherit;
+}
+.vc-card-body .vc-list li { 
+  margin-bottom: 8px; 
+  line-height: 1.6;
+}
+.vc-card-body .vc-list li:last-child { 
+  margin-bottom: 0; 
+}
 @media (max-width: 767px){ .vc-card-media { grid-template-columns: 1fr; } .vc-card-media img { width: 100%; height: 220px; } }
 
 @media (max-width: 767px){ .vc-card { width: 100%; } }
