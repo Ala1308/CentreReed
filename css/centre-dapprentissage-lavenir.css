@@ -120,7 +120,7 @@ html, body { max-width: 100%; overflow-x: hidden; }
   margin-bottom: 24px;
 }
 .vc-card-body .paragraph { 
-  text-align: left; 
+  text-align: center; 
   margin-bottom: 8px;
 }
 .vc-card-body .vc-list { 
